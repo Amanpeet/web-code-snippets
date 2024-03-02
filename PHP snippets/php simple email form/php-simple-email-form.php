@@ -53,10 +53,10 @@ if(isset($_POST["submit"])){
     $output = "<strong class='text-danger'>Fill all fields. Please try again with valid info.</strong>";
   } else {
     // Check if the "Sender's Email" input field is filled out
-    $name  = $_POST['name'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $msg   = $_POST['msg'];
+    $name  = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $msg   = htmlspecialchars($_POST['msg']);
 
     // Sanitize & Validate E-mail
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -95,4 +95,14 @@ if(isset($_POST["submit"])){
 }
 echo $output;
 ?>
+
+<!-- HTML form -->
+<form action="" method="post">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="tel" name="phone" placeholder="Phone" required>
+  <textarea name="msg" placeholder="Message"></textarea>
+  <input type="submit" name="submit" value="Submit">
+</form>
+
 
