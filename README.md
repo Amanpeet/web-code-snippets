@@ -1,2 +1,11 @@
-# code-snippets
-Code snippets for quick web development
+# Web Code Snippets
+General Purpose commonly used Code Snippets for Web development projects.
+
+## Categories:
+HTML
+CSS
+JS
+PHP
+WORDPRESS
+
+
