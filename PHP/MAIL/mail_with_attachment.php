@@ -42,6 +42,18 @@ if (isset($_POST["submit"])) {
       $sender  = "info@doveresearchlab.com";
       $subject = "Dove Research Lab - Career Form";
 
+      // $htmlMessage = "<html><head><title>Alumni Form DMMKKR</title></head><body>";
+      $htmlMessage .= "<p>New Alumni Meet Registration Form 2019 on Website.</p>";
+      $htmlMessage .= "<table rules='all' style='border:1px solid #ccc;' cellpadding='10'>";
+      // $message .= "<tr> <td>First</td> <td>".$fname."</td> </tr>";
+      $htmlMessage .= "<tr> <td style='width:30%;'> Alumni name </td> <td>".$f5_alumni_name."</td> </tr>";
+      $htmlMessage .= "<tr> <td> Father name </td> <td>".$f5_father_name."</td> </tr>";
+      $htmlMessage .= "<tr> <td> Husband name </td> <td>".$f5_husband_name."</td> </tr>";
+      $htmlMessage .= "<tr> <td> Date_of_birth </td> <td>".$f5_date_of_birth."</td> </tr>";
+      $htmlMessage .= "<tr> <td> Event specify </td> <td>".$f5_event_specify."</td> </tr>";
+      $htmlMessage .= "</table>";
+      // $htmlMessage .= "</body></html>";
+
       // send email with attachments if found
       $tmpName  = $_FILES['attachment']['tmp_name'];
       if (file($tmpName)) {
@@ -91,6 +103,8 @@ if (isset($_POST["submit"])) {
             . "Content-Transfer-Encoding: 7bit\r\n\r\n"
             . $htmlMessage . "\r\n"
             . $boundary_last;
+
+
 
           if (mail($to, $subject, $body, $headers)) {
             echo "<h4>Thanks!</h4> Email successfully Sent!<br />";

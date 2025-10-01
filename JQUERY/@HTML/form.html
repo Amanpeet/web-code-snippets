@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Form Test</title>
+    <link type="text/css" rel="stylesheet" href="form_style.css">
+    </head>
+    <body>
+    
+    <header>
+    <h1>Simple form!</h1>
+    </header>
+    <hr>
+    
+    
+    <section>
+    <p>Fill the details below:</p>
+    
+    <div class="form1">
+    <form name="formx" method="post" >
+    
+    
+    <!-- FORMAT
+    <table><tr>
+    	<td class="left1"> Name: </td>
+       	<td> <input type="text" title="your name here" required /> </td>      	
+     </tr></table>
+    -->
+    <fieldset>
+    <legend>Personal Infomation</legend>
+    <table>
+    <tr><td class="left1">Name: </td>
+        <td><input class="size1" type="text" title="your name here" required autofocus />
+        </td>
+      </tr>
+      <tr><td class="left1">Age: </td>
+      <td><input class="size1" type="number" title="Your age in digits" min="18" max="99" required />
+      </td></tr>
+        <br />
+        <tr>
+    	<td class="left1"> Gender </td>
+       	<td> 
+       
+        <input type="radio" name="gender" value="male" />Male
+        <input type="radio" name="gender" value="female" />Female 
+         </td>      	
+        
+     </tr>
+        <tr><td class="left1">Email id</td>
+         <td>
+      <input class="size1" type="email" name="email" required  />
+		</td>       
+        </tr>
+
+        
+        </table>
+        </fieldset> 
+        <fieldset>
+        <legend>Whereabouts</legend>
+        <table>
+        <tr>
+    	<td class="left1"> State: </td>
+       	<td> <select class="size1" name="states">
+        <option name="Punjab" selected> Punjab</option>
+        <option name="Haryana"> Haryana</option>
+        <option name="Other">Other</option>
+        </select> </td>      	
+     </tr>
+     <tr>
+     <td class="left1">Nationality</td>
+     <td><input class="size1" list="Natives" />
+     <datalist id="Natives">
+     <option value="Indian"/>
+     <option value="British" />
+     <option value="other" />
+     </datalist>
+     </tr>
+     <tr>
+     <td class="left1">Experience</td>
+     <td>0<input type="range" min="0" max="10" >10</td>
+     </tr>
+     
+     </table>
+            </fieldset>
+            
+            <fieldset>
+            <legend>Other info</legend>
+            <table>
+            <tr>
+            <td class="left1">Date of birth</td>
+            <td><input class="size1" type="date" name="dob"></td>
+            </tr>
+            
+            <tr>
+            <td class="left1">Website</td>
+            <td><input class="size1" type="url" name="site"></td>
+            </tr>
+            
+            <tr>
+            <td class="left1">Favorite color</td>
+            <td><input type="color" ></td>
+            </tr>
+            
+            <tr><td class="left1">
+        Additional Information:
+      <td>
+      <textarea class="size1" name="comment" maxlength="100" ></textarea>
+		</td>       
+        </tr>
+            
+            </table>
+            </fieldset>
+            
+        <br />
+        <table>
+            <tr>
+            <td class="left1" colspan="2">
+        <input id="actionbtn" type="submit" formaction="action.html" value="Done!" />  </td>
+        </tr>
+        </table>
+        </form>
+    </div>
+    
+    </section>
+    
+    </body>
+</html>

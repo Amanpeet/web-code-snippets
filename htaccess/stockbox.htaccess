@@ -1,0 +1,91 @@
+#ErrorDocument 404 http://www.yourdomain.com/your-404-page
+
+#Please set RewriteEngine to On in order to enable the Stockbox SEO feature
+RewriteEngine On
+
+
+########## Begin - Rewrite rules to block out some common exploits
+#
+# Block out any script trying to set a mosConfig value through the URL
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+# Block out any script trying to base64_encode crap to send via URL
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+# Block out any script that includes a <script> tag in URL
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+# Block out any script trying to set a PHP GLOBALS variable via URL
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+# Block out any script trying to modify a _REQUEST variable via URL
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+# Send all blocked request to homepage with 403 Forbidden error!
+Options FollowSymLinks
+RewriteRule ^(.*)$ index.php [F,L]
+
+#redirect user to the full url name when missing www
+#RewriteCond %{HTTP_HOST} ^domainname.com$ 
+#RewriteRule ^(.*) http://www.domainname.com/$1 [QSA,L,R=301]
+#
+########## End - Rewrite rules to block out some common exploits
+RewriteRule ^(images)(.*)(.html|htm)$ $1$2$3 [NC,L]
+RewriteRule ^(logout_private)/(.*).html$ logout.php?from=private_gallery.php&mode=$2 [NC,L]
+RewriteRule ^(.*[\/])(logout_private)/(.*).html$ logout.php?from=private_gallery.php&mode=$3 [NC,L]
+RewriteRule ^(logout_private.html)$ logout.php?from=private_gallery.php&mode=1 [NC,L]
+RewriteRule ^(cb.html)$ cb.php [NC,L]
+RewriteRule ^(login.html)$ user_login.php [NC,L]
+
+RewriteRule ^(private_gallery.html)$ private_gallery.php [NC,L]
+RewriteRule ^(index|logout)/(.*)?$ $1.php?link=$2 [NC,L]
+RewriteRule ^(index)$ index.php [NC,L]
+RewriteRule ^(index\/+)$ index.php [NC,L]
+
+#new seo urls
+#logout
+RewriteRule ^(.*[\/])logout.html$ logout.php?from=index.php [NC,L]
+RewriteRule ^logout.html$ logout.php?from=index.php [NC,L]
+
+RewriteRule ^(rss[\/])(.*)(\.html)?$ rss.php?arg=$1$2 [NC,L]
+RewriteRule ^(.*[\/])(rss[\/])(.*)(\.html)?$ rss.php?arg=$1$2$3 [NC,L]
+
+RewriteRule ^register.html$ register.php [NC,L]
+RewriteRule ^(.*[\/])(register.html)$ register.php?arg=$1$2 [NC,L]
+
+RewriteRule ^((.*)\.html)?$ index.php?arg=$1 [NC,L]
+
+RewriteRule ^(cms[\/])(.*)?$ index.php?arg=$1$2 [NC,L]
+RewriteRule ^(.*[\/])(cms[\/])(.*)?$ index.php?arg=$1$2$3 [NC,L]
+
+#search
+RewriteRule ^(.*[\/])search[\/]?$ index.php?arg=$1search/index.html [NC,L]
+RewriteRule ^(.*[\/])search?$ index.php?arg=$1search/index.html [NC,L]
+RewriteRule ^search[\/]?$ index.php?arg=search/index.html [NC,L]
+RewriteRule ^search?$ index.php?arg=search/index.html [NC,L]
+
+#new photos
+RewriteRule ^(.*[\/])new_media[\/]?$ index.php?arg=$1new_media/index.html [NC,L]
+RewriteRule ^(.*[\/])new_media?$ index.php?arg=$1new_media/index.html [NC,L]
+RewriteRule ^new_media[\/]?$ index.php?arg=new_media/index.html [NC,L]
+RewriteRule ^new_media?$ index.php?arg=new_media/index.html [NC,L]
+
+#popular
+
+RewriteRule ^(.*[\/])popular[\/]?$ index.php?arg=$1popular/index.html [NC,L]
+RewriteRule ^(.*[\/])popular?$ index.php?arg=$1popular/index.html [NC,L]
+RewriteRule ^popular[\/]?$ index.php?arg=popular/index.html [NC,L]
+RewriteRule ^popular?$ index.php?arg=popular/index.html [NC,L]
+
+#lightbox
+RewriteRule ^(.*[\/])lightbox[\/]?$ index.php?arg=$1lightbox/index.html [NC,L]
+RewriteRule ^(.*[\/])lightbox?$ index.php?arg=$1lightbox/index.html [NC,L]
+RewriteRule ^lightbox[\/]?$ index.php?arg=lightbox/index.html [NC,L]
+RewriteRule ^lightbox?$ index.php?arg=lightbox/index.html [NC,L]
+
+#news
+RewriteRule ^(.*[\/])news[\/]?$ index.php?arg=$1news/index.html [NC,L]
+RewriteRule ^(.*[\/])news?$ index.php?arg=$1news/index.html [NC,L]
+RewriteRule ^news[\/]?$ index.php?arg=news/index.html [NC,L]
+RewriteRule ^news?$ index.php?arg=news/index.html [NC,L]
+
+#portfolio
+RewriteRule ^(.*[\/])portfolio[\/]?$ index.php?arg=$1portfolio/index.html [NC,L]
+RewriteRule ^(.*[\/])portfolio?$ index.php?arg=$1portfolio/index.html [NC,L]
+RewriteRule ^portfolio[\/]?$ index.php?arg=portfolio/index.html [NC,L]
+RewriteRule ^portfolio?$ index.php?arg=portfolio/index.html [NC,L]

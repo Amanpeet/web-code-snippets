@@ -1,0 +1,78 @@
+<a href="#" class="glitch">Amanz</a>
+
+<style>
+body {
+  background-color: #1D1D1F;
+  color: #fff;
+}
+
+.glitch {
+  font-size: 130px;
+  line-height: 1;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  margin: 0;
+  text-decoration: none;
+  color: #fff;
+}
+.glitch::before, .glitch::after {
+  display: block;
+  content: 'Amanz';
+  /* content: attr(data-text); */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: .8;
+}
+.glitch::after {
+  color: #f0f;
+  z-index: -2;
+}
+.glitch::before {
+  color: #0ff;
+  z-index: -1;
+}
+.glitch::before {
+  -webkit-animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+          animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+.glitch::after {
+  -webkit-animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+          animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+}
+
+@keyframes glitch {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-3px, 5px);
+    transform: translate(-3px, 5px);
+  }
+  40% {
+    -webkit-transform: translate(-3px, -3px);
+    transform: translate(-3px, -3px);
+  }
+  60% {
+    -webkit-transform: translate(3px, 3px);
+    transform: translate(3px, 3px);
+  }
+  80% {
+    -webkit-transform: translate(3px, -3px);
+    transform: translate(3px, -3px);
+  }
+  to {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
+
+</style>

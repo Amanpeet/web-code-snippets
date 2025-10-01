@@ -66,14 +66,6 @@ RewriteRule (.*) https://www.indianevisaonline.com/$1 [L,R=301]
 
 
 
-# Redirect Everything
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^jairamgroups.org$ [OR]
-RewriteCond %{HTTP_HOST} ^www.jairamgroups.org$
-RewriteRule (.*)$ http://www.jrgcollegekkr.ac.in/ [R=301,L]
-
-
-
 
 
 # 301 (Permanent) Redirect: Point an entire site to a different URL on a permanent basis. This is the most common type of redirect and is useful in most situations. In this example, we are redirecting to the "mt-example.com" domain:

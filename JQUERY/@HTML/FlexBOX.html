@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<title>Flexbox test</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+
+html{height:100%;}
+body{
+	background:lightgray;
+	height:100%;
+	display:block;
+	overflow:auto;	
+}
+.wrapper{
+	border:2px solid dodgerblue;
+	width:90%;
+	height:100%;
+	margin:0 auto;	
+	padding:20px;
+	overflow:scroll;
+	
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:center;
+	align-items:flex-start;
+}
+
+.item{
+	/*height:100px;*/
+	width:120px;
+	background:tomato;
+	margin:8px;
+	padding:8px;
+	
+	/*flex-grow:1;*/
+}
+
+.item:nth-child(3){
+	/*flex-grow: 2;*/
+	border:2px solid black;
+}
+
+.item:nth-child(2){
+	flex-shrink: 1;
+	border:2px solid blue;
+}
+
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="item">this is a line is is a line is is a line of dummy text.</div>
+<div class="item">this is a is is a line is is a line line of dummy text.</div>
+<div class="item">this is a line of dummy text.</div>
+<div class="item">this iis is a line s a line of dummy text.</div>
+<div class="item">thisis is a line is is a line  is a line of dummy text.</div>
+<div class="item">this is a line of is is a line is is a line is is a line is is a line dummy text.</div>
+
+
+
+
+</div>
+
+</body>
+</html>

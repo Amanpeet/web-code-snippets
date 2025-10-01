@@ -1,0 +1,142 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+}
+
+
+.wrapper {}
+
+
+/*The carousel starts*/
+.carousel-container {
+  position: relative;
+  height: 320px;
+  width: 580px;
+  overflow: hidden;
+  border: 1px dashed gray;
+  background: darkgray;
+  margin: auto;  
+}
+
+.carousel-inner {
+  overflow: hidden;
+  float: left;
+  width: 510px;
+  background: lightgray;
+}
+
+.carousel-ul {
+  list-style: none;
+  position: relative;
+  left: -250px;
+  width: 9999px;
+}
+
+.carousel-ul li {
+  float: left;
+  width: 240px;
+  border: 1px solid gray;
+  margin: 10px 0px 10px 10px;
+  background: whitesmoke;
+  height: 300px;
+}
+
+.carousel-btns {
+  position: absolute;
+  right: 6px;
+  top: 10px;
+}
+
+.carousel-btns span {
+  background: lightgray;
+  border: 1px solid gray;
+  padding: 4px 2px;
+  cursor: pointer;
+}
+</style>
+
+<body>
+  <div class="wrapper">
+    <h2 style="text-align:center; margin:40px;">Getting to the carousel</h4>
+
+  <div class="carousel-container">   
+    <div class="carousel-inner">
+      <ul class="carousel-ul">
+        <li><img src="http://placehold.it/200x80"> <p>1. Description and all that.</p> </li>
+        <li><img src="http://placehold.it/200x80"> <p>2. Description and all that.</p> </li>
+        <li><img src="http://placehold.it/200x80"> <p>3. Description and all that.</p> </li>
+        <li><img src="http://placehold.it/200x80"> <p>4. Description and all that.</p> </li>
+        <li><img src="http://placehold.it/200x80"> <p>5. Description and all that.</p> </li>
+        <li><img src="http://placehold.it/200x80"> <p>6. Description and all that.</p> </li>
+      </ul>      
+    </div>
+    <!-- the previous and next buttons -->
+    <div class="carousel-btns"><span class="prev-btn">prev</span><span class="next-btn">next</span></div>    
+  </div>
+
+  
+</div>
+
+</body>
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	carouselSlider();
+
+});
+
+function carouselSlider(){
+
+	//setting variables
+  var slideTime    = 400;
+  var carousel     = $(".carousel-ul");
+  var carousel_li  = carousel.children("li");
+  var carousel_box = $(".carousel-container");
+  var leftDefault  = parseInt(carousel.css("left"));
+
+	//moving last item before the first
+	carousel.children("li:first").before(carousel.children("li:last"));	
+
+	//the previous button click
+	carousel_box.find(".prev-btn").click(function(){
+
+		var listItemWidth= carousel_li.outerWidth() + 10;
+		//using list ul width - listitemWidth
+		var leftIndent = parseInt(carousel.css("left")) + listItemWidth;
+
+		carousel.animate({'left' : leftIndent}, slideTime, function(){
+			carousel.children("li:first").before(carousel.children("li:last"));
+			carousel.css("left", leftDefault);
+		});
+
+	});
+
+	//the next button click
+	carousel_box.find(".next-btn").click(function(){
+
+		var listItemWidth= carousel_li.outerWidth() + 10;
+		//just using + listItemWidth
+		var rightIndent = parseInt(carousel.css("left")) - listItemWidth;
+
+		carousel.animate({'left' : rightIndent}, slideTime, function(){
+			carousel.children("li:last").after(carousel.children("li:first"));
+			carousel.css("left",leftDefault);
+		});
+
+	});
+
+}//function carousel end
+
+</script>

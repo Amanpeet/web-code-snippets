@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      var stickymon = $('.stickymon');
+      var stickyTop = stickymon.offset().top;
+      $(window).scroll(function() {
+        var windowTop = $(window).scrollTop();
+        var rogue = $(".blue").height() + $(".blue").offset().top - $(".sticky").height() + 9999;
+        if ( stickyTop < windowTop && rogue > windowTop ) {
+          stickymon.css('position', 'fixed');
+        } else {
+          stickymon.css('position', 'relative');
+        }
+      });
+
+    });
+  </script>
+
+  <style>
+    .blue {
+      background-color: dodgerblue;
+      height: 500px;
+    }
+
+    .stickymon {
+      width: 200px;
+      background-color: yellow;
+      text-align: center;
+      top: 0;
+      padding: 20px;
+      z-index: 10;
+    }
+
+    .red {
+      background-color: tomato;
+      height: 800px;
+    }
+
+    .green {
+      background-color: forestgreen;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="green"></div>
+
+  <div class="blue">
+    <div class="stickymon">Sticky</div>
+  </div>
+
+  <div class="red"></div>
+
+
+</body>
+</html>

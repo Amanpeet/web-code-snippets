@@ -1,0 +1,124 @@
+/**********************
+General page styling
+**********************/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    background: gainsboro;
+	font-family: "Courier New", Courier, monospace;
+    padding: 0;
+    margin: 0;
+}
+
+p{
+	background:black;
+	border-radius:2px;
+	padding:20px 30px;
+	color:limegreen;
+	display:inline-block;
+}
+
+div, p{
+margin-top:50px !important;
+}
+
+/****************
+Cube out buttons
+*****************/
+
+.cube-btn{
+	width: 200px;
+	height: 80px;
+	margin: 0 auto;	
+	
+	-webkit-transition: -webkit-transform .3s;
+	transition: transform .3s;
+	
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.cube-btn a{
+	width: 200px;
+	height: 80px;	
+	line-height:80px;		
+	border:1px solid black;	
+	background:white;
+	color:black;
+	text-decoration:none;
+	text-align:center;
+	display:inline-block;
+}
+
+.cube-btn a:first-child{
+	-webkit-transform: translateZ(40px);
+	transform: translateZ(40px);
+}
+
+.cube-btn a:nth-child(2){
+	background:black;
+	color:white;
+
+	-webkit-transform: rotateX(-90deg) translateZ(-40px);
+	transform: rotateX(-90deg) translateZ(-40px);
+}
+
+.cube-btn:hover {
+	-webkit-transform: rotateX(90deg);
+	transform: rotateX(90deg); 
+}
+
+/** Cube out button end **/
+
+
+.cube-btn-rev{
+	width: 200px;
+	height: 80px;
+	margin: 0 auto;	
+	
+	-webkit-transition: -webkit-transform .3s;
+	transition: transform .3s;
+	
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d; /* <-NB */
+}
+
+.cube-btn-rev a{
+	width: 200px;
+	height: 80px;	
+	line-height:80px;		
+	border:1px solid black;	
+	background:white;
+	color:black;
+	text-decoration:none;
+	text-align:center;
+	display:inline-block;
+	position:relative;
+}
+
+.cube-btn-rev a:first-child{
+	-webkit-transform: translateZ(40px);
+	transform: translateZ(40px);
+}
+
+.cube-btn-rev a:nth-child(2){
+	background:black;
+	color:white;
+	/*top:-160px;*/
+	top:-200%;
+	left:0px;
+
+	-webkit-transform: rotateX(90deg) translateZ(-40px);
+	transform: rotateX(90deg) translateZ(-40px);
+	
+}
+
+.cube-btn-rev:hover {
+	-webkit-transform: rotateX(-90deg);
+	transform: rotateX(-90deg); 
+}

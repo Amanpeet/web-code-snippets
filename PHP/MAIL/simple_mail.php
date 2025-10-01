@@ -12,7 +12,7 @@
     $from = "info@domain.com";
     $subject = "HTML email";
 
-    $message = "<html><head><title>Contact Form IndiaVisa</title></head><body>";
+    $message = "<html><head><title>Contact Form</title></head><body>";
     $message .= "<p>New Query on Website.</p>";
     $message .= '<table rules="all" style="border:1px solid #ccc;" cellpadding="10">';
     $message .= "<tr> <td>First Name</td> <td>".$fname."</td> </tr>";
@@ -43,11 +43,12 @@
 
 
 <!-- MARK II -->
+<!-- with validations -->
 <?php
 $output ='';
 if(isset($_POST["submit"])){
   // Checking For Blank Fields.
-  if($_POST["name"]==""||$_POST["email"]==""||$_POST["phone"]==""||$_POST["job"]==""||$_POST["msg"]==""){
+  if($_POST["name"]=="" || $_POST["email"]=="" || $_POST["phone"]=="" || $_POST["msg"]==""){
     // echo "Fill all fields. Please try again with valid info.";
     $output = "<strong class='text-danger'>Fill all fields. Please try again with valid info.</strong>";
   } else {
@@ -55,7 +56,6 @@ if(isset($_POST["submit"])){
     $name  = $_POST['name'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    $job   = $_POST['job'];
     $msg   = $_POST['msg'];
 
     // Sanitize & Validate E-mail
@@ -64,17 +64,15 @@ if(isset($_POST["submit"])){
     if (!$email){
       $output = "<strong class='text-danger'>Invalid Email detected. Please try again with valid info.</strong>";
     } else {
-      $to = "deepakverma@prismautomation.in";
-      // $to = "amanpreet@intiger.in";
-      $from = "mail@prismautomation.in";
-      $subject = "New Careers Application";
+      $to = "amanpreet@intiger.in";
+      $from = "mail@example.com";
+      $subject = "New Contact Form Enquiry";
 
-      $message = "<html><head><title>New Careers Application</title></head><body>";
+      $message = "<html><head><title>New Contact Form Enquiry</title></head><body>";
       $message .= '<table rules="all" style="border:1px solid #ddd;" cellpadding="10">';
-      $message .= "<tr> <td>First Name</td> <td>".$name."</td> </tr>";
+      $message .= "<tr> <td>Name</td> <td>".$name."</td> </tr>";
       $message .= "<tr> <td>Phone</td> <td>".$phone."</td> </tr>";
       $message .= "<tr> <td>Email</td> <td>".$email."</td> </tr>";
-      $message .= "<tr> <td>Email</td> <td>".$job."</td> </tr>";
       $message .= "<tr> <td>Details</td> <td>".$msg."</td> </tr>";
       $message .= "</table>";
       $message .= "</body></html>";
@@ -97,3 +95,4 @@ if(isset($_POST["submit"])){
 }
 echo $output;
 ?>
+
