@@ -1,0 +1,125 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{background: #F1F1F1}
+
+
+/********************
+	TabsX v1.0
+*********************/
+ul{list-style: inside none;}
+
+.tabs-container{
+	border: 1px solid gray;
+	margin:40px auto;
+	width: 800px;
+}
+
+.tabs-list{
+	overflow: auto;
+	display: block;
+}
+.tabs-list li{
+	float: left;
+	width: 25%;
+	background: #DBDBDB;
+	border-bottom: 1px solid #7C7C7C;
+	border-right: 1px solid #7C7C7C;
+	padding: 10px;
+	text-align: center;
+	cursor: pointer;	
+	transition:all 0.2s ease;
+}
+
+.tabs-list li:last-child{border-right: none;}
+
+
+.active-tab{
+	background: #707070 !important;
+	color:#FFFFFF;
+}
+
+.tabs-details li{
+	display: none;
+}
+.active-tab, 
+.active-detail{
+	display: block !important;
+}
+
+.tabs-details li p{
+	padding: 20px;
+}
+
+</style>
+
+
+<div class="tabs-container">
+	
+	<ul class="tabs-list">
+		<li class="active-tab">Oranges</li>
+		<li>Grapes</li>
+		<li>Mangoes</li>
+		<li>Guavas</li>
+	</ul>
+
+	<div class="tabs-details">
+    <div class="tab-content active-detail">
+      <p>Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange, Oranges are very orange.</p>
+    </div>
+
+    <div class="tab-content">
+      <p>Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet, Grapes are really sweet.</p>
+    </div>
+
+    <div class="tab-content">
+      <p>Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical, Mangoes are not spherical.</p>
+    </div>
+
+    <div class="tab-content">
+      <p>Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great, Guavas are simply great.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+	//$(".tabs-details li").hide();
+	//$(".tabs-details li:first-child").show();
+
+	$(".tabs-list li").click(function(event){
+
+		$(".tabs-list li").removeClass("active-tab");
+		$(this).addClass("active-tab");
+
+		if($(".tabs-list li:nth-child(1)").hasClass("active-tab")){
+			$(".tabs-details li").removeClass("active-detail");
+			$(".tabs-details li:nth-child(1)").addClass("active-detail");
+		}
+		else if($(".tabs-list li:nth-child(2)").hasClass("active-tab")){
+			$(".tabs-details li").removeClass("active-detail");
+			$(".tabs-details li:nth-child(2)").addClass("active-detail");
+		}
+		else if($(".tabs-list li:nth-child(3)").hasClass("active-tab")){
+			$(".tabs-details li").removeClass("active-detail");
+			$(".tabs-details li:nth-child(3)").addClass("active-detail");
+		}
+		else if($(".tabs-list li:nth-child(4)").hasClass("active-tab")){
+			$(".tabs-details li").removeClass("active-detail");
+			$(".tabs-details li:nth-child(4)").addClass("active-detail");
+		}
+
+		
+
+	});
+
+});
+</script>

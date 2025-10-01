@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Owl Carousel 2</title>
+
+    <link rel="stylesheet" href="owl.carousel.min.css">
+    <link rel="stylesheet" href="owl.theme.default.min.css">
+
+		<script src="jquery.min.js"></script>
+		<script src="owl.carousel.min.js"></script>
+
+    <style>
+      .owl-carousel .item {
+        border: 2px solid #ccc;
+        background: #eee;
+        height: 300px;
+      }
+    </style>
+
+	</head>
+	<body>
+
+    <!-- Set up your HTML -->
+    <div class="owl-carousel">
+      <div class="item"> Your Content1 </div>
+      <div class="item"> Your Content2 </div>
+      <div class="item"> Your Content3 </div>
+      <div class="item"> Your Content4 </div>
+      <div class="item"> Your Content5 </div>
+      <div class="item"> Your Content6 </div>
+      <div class="item"> Your Content7 </div>
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        // $(".owl-carousel").owlCarousel();
+
+        $('.owl-carousel').owlCarousel({
+          center: false,
+          items: 4,
+          margin: 15,
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 4000,
+          nav: true,
+          dots: true,
+          lazyLoad: false,
+          navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+          responsive: {
+            576: {
+              items: 1
+            },
+            992: {
+              items: 3
+            },
+            1200: {
+              items: 4
+            }
+          }
+        });
+
+
+      });
+    </script>
+
+	</body>
+</html>

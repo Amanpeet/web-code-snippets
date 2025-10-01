@@ -1,0 +1,74 @@
+/********************* 
+I"VE BROKEN THE STYLING DOWN SO YOU CAN SEE HOW ITS BUILT UP 
+USING GRADIENTS, TEXT-SHADOWS AND BOX-SHADOWS
+*********************/
+
+html {
+  background: #3d3d47;
+}
+
+.container {
+  margin: 80px auto;
+  text-align: center;
+}
+
+span {
+  width: 250px;
+  margin: 0 auto;
+  display: block;
+}
+
+.button {
+  /* POSITIONING */
+  padding: 30px;
+  top: -200px;
+  border-radius: 8px;
+  position: relative;
+  float: left;
+
+  /* BUTTON STYLING */
+  border-top: 1px solid #fff;
+  box-shadow: 0 5px 8px #002851, 0 8px 0 #002851, -2px 1px 0 #003872, 2px 1px 0 #003872, 0px 8px 10px #000, 0 10px 30px #1b1b1b;
+
+  /* FONT STYLING */
+  font: bold 30px 'Trebuchet Ms', helvetica;
+  letter-spacing: 4px;
+  text-decoration: none;
+  text-shadow: -1px -1px 1px #00172e,1px 1px 1px #a1cfff;
+  color: #14467a;
+}
+
+.button:hover {  
+  /* BUTTON SHADOW */
+ box-shadow: 0 6px 6px #002851, 0 6px 0 #002851, -1px 0px 0 #003872, 0px 0px 0 #003872, 0px 7px 8px #000, 0 7px 20px #1b1b1b;
+}
+
+.button:active {  
+  border-top: 1px solid #cde4fc;
+  /* BUTTON SHADOW */
+ box-shadow: 0 0px 0px #002851, 0 3px 0 #002851, 0px 0px 0 #003872, 0px 0px 0 #003872, 0px 2px 4px #000, 0 2px 10px #1b1b1b;
+}
+
+/* BLUE GRADIENT ON BUTTON */
+.grad {
+  background: dodgerblue;
+}
+
+/* ANIMATE THE BUTTON */
+.transition,
+.transition:hover,
+.transition:active{
+  -webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.highlight {
+  position: relative;
+  margin: -200px auto 0 auto;
+  width: 500px;
+  height: 400px;
+  opacity: 0.4;
+  background: rgba(255,255,255,0) 100%);
+}

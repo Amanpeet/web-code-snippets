@@ -1,0 +1,22 @@
+<div class="copy-btn">COPY</div>
+<div class="copy-element"> Silence is the language of God. </div>
+<textarea placeholder="paste it here."></textarea>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+
+      $('.copy-btn').click(function(e) {
+        e.preventDefault();
+        var self = $(this).siblings('.copy-element').text();
+        var dummy = document.createElement("input");
+        document.body.appendChild(dummy);
+        dummy.setAttribute("id", "dummy_id");
+        document.getElementById("dummy_id").value = self;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);    
+        console.log('copied!');
+      });
+
+  });
+  </script>

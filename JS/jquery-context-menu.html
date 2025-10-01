@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Amanz">
+  <meta name="description" content="">
+  <title>Test Board</title>
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+  
+  <!-- Bootstrap CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  <!-- jQuery UI -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+  <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+</head>
+
+<body>
+
+<style>
+/* Context menu */
+.context-menu {
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid #CCC;
+  white-space: nowrap;
+  font-family: sans-serif;
+  background: #FFF;
+  color: #333;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.context-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  list-style-type: none;
+  transition: all .3s ease;
+  user-select: none;
+}
+
+.context-menu li:hover {
+  background-color: #DEF;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<ul class='context-menu'>
+  <li data-action="first">First thing</li>
+  <li data-action="second">Second thing</li>
+  <li data-action="third">Third thing</li>
+</ul>
+
+<!-- Not needed, only for making it clickable on StackOverflow -->
+<div class="righty">
+  Right click me  
+</div>
+
+<script>
+
+// Trigger action when the contexmenu is about to be shown
+$('.righty').bind("contextmenu", function(event) {
+  event.preventDefault();
+  
+  $(".context-menu").finish().toggle(100).css({
+    top: event.pageY + "px",
+    left: event.pageX + "px"
+  });
+});
+
+// If the document is clicked somewhere
+$(document).bind("mousedown", function(e) {
+  if (!$(e.target).parents(".context-menu").length > 0) {
+    $(".context-menu").hide(100);
+  }
+});
+
+// If the menu element is clicked
+$(".context-menu li").click(function(){
+  // This is the triggered action name
+  switch($(this).attr("data-action")) {
+
+    // A case for each action. Your actions here
+    case "first": 
+      alert("first"); 
+    break;
+    case "second": 
+      alert("second"); 
+    break;
+    case "third": 
+      alert("third"); 
+    break;
+  }
+
+  // Hide it AFTER the action was triggered
+  $(".context-menu").hide(100);
+});
+
+</script>
+
+</body>
+</html>

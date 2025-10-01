@@ -1,0 +1,50 @@
+<style>
+</style>
+<center>
+
+  <h3>Wanna Pass Values?</h3>
+  <br />
+
+  <form id="myform" action="jquery-pass2.html" method="post">
+  	<input id="myText1" placeholder="color?" type="text" />
+  	<br />
+  	<input id="myText2" placeholder="games?" type="text" />
+  	<br />
+  	<input type="submit" value="Send!" />
+  </form>
+
+</center>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).click(function(){
+
+	$("#myform").submit(function(event){
+		// alert("Done!");
+		event.preventDefault();
+		var passVal1 = $("#myText1").val();
+		var passVal2 = $("#myText2").val();
+		window.location.href = "jquery-pass2.html" + "?" + "passVal1=" + passVal1 + "&passVal2=" + passVal2;
+	});
+
+
+	$("#newform").submit(function(event){
+		// alert("Done!");
+		event.preventDefault();
+		var passEmail = $("#newsletter-email").val();
+		window.location.href = "newletter-sub.aspx" + "?" + "passEmail=" + passEmail ;
+	});
+
+
+	$(".newsletter-signup-btn").click(function(){
+		// alert("Done!");
+		event.preventDefault();
+		var passEmail = $("#newsletter-email").val();
+		window.location.href = "thanks.html" + "?" + "passEmail=" + passEmail ;
+	});
+
+
+
+});
+
+</script>

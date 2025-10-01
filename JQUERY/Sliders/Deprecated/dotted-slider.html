@@ -1,0 +1,270 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*************************
+  BANNER SLIDER
+*************************/
+.wrapper *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper{
+  z-index: 99;
+  border: 10px solid green;
+  min-height: 400px;
+  position: relative;
+}
+
+
+#bgsliderx-inner {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: #c0c0c0;
+}
+#bgsliderx-inner ul.bgsliderx-list {
+  border: 2px dashed black;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;  
+  position: relative;
+  list-style: none;
+}
+#bgsliderx-inner ul.bgsliderx-list li {
+  border: 1px solid tomato;
+  position: absolute;
+  top: 0px;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/*slider buttons*/
+#bgsliderx-prev,
+#bgsliderx-next {
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 5px;
+  margin-top: 10px;
+}
+#bgsliderx-inner .active-slidex {
+  z-index: 50;
+  left: 0px !important;
+}
+
+
+/*dotted indicators*/
+#bgsliderx-indicators ul {
+  list-style: none;
+}
+#bgsliderx-indicators ul li {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 20px;
+  width: 20px;
+}
+#bgsliderx-indicators .active-dot {
+  background: dodgerblue;
+}
+
+
+/*setting the slides*/
+.bgsliderx-list li:nth-child(1){background:url("http://placehold.it/1371x480") no-repeat center;}
+.bgsliderx-list li:nth-child(2){background:url("http://placehold.it/1372x480") no-repeat center;}
+.bgsliderx-list li:nth-child(3){background:url("http://placehold.it/1373x480") no-repeat center;}
+.bgsliderx-list li:nth-child(4){background:url("http://placehold.it/1374x480") no-repeat center;}
+
+
+
+</style>
+
+<div id="bgsliderx-inner">
+  <ul class="bgsliderx-list">
+    <li class="active-slidex">one</li>
+    <li>two</li>
+    <li>three</li>
+    <li>four</li>
+  </ul>
+</div>
+
+
+<div class="wrapper">
+
+  <!-- the prev and next buttons -->
+  <center>
+  <div id="slider-buttons">
+    <br/>
+    <p><span id="bgsliderx-prev">Prev</span><span id="bgsliderx-next">Next</span></p>
+  </div>
+  </center>
+
+
+<center><br/><br/>
+<div id="bgsliderx-indicators">
+  <ul class="bgsliderx-dotlist">
+    <li class="active-dot">1 </li>
+    <li> 2</li>
+    <li> 3</li>
+    <li> 4</li>
+    <li> 5</li>
+  </ul>
+</div>
+</center>
+
+</div>
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  bgsliderx();
+
+});
+
+function bgsliderx() {
+
+
+    var slideChangeTime = 4000;
+
+    //declaring current next and previous cards 
+    var current = $(".active-slidex");
+    var nextx = $(".active-slidex").next();
+    var prevx = $(".bgsliderx-list li:last-child");
+
+
+    //fucntion to change slides
+    function changeSlide(e){
+      current.removeClass("active-slidex");
+      $(e).addClass("active-slidex");
+
+      //reset variables
+      current = $(".active-slidex");
+      nextx = $(".active-slidex").next();
+      prevx = $(".active-slidex").prev();
+
+      //other slides to left n right
+      prevx.css("left", "-100%");
+      nextx.css("left", "100%");
+
+      //if no prev slide
+      if (prevx.length === 0) {
+        prevx = $(".bgsliderx-list li:last-child");
+      }
+
+      //if no next slide
+      if (nextx.length === 0) {
+        nextx = $(".bgsliderx-list li:first-child");
+      }
+
+      //clear interval and restart autoTimer
+      clearInterval(resetTimer);
+      autoTimer();
+
+    };
+
+
+    //declaring dots
+    var currentDot = $(".active-dot");
+    var nextxDot = $(".active-dot").next();
+    var prevxDot = $(".bgsliderx-dotlist li:last-child");
+
+    //changing the dots
+    function changeDots(f){
+      $(".bgsliderx-dotlist li").removeClass("active-dot");
+      //current.removeClass("active-dot");
+      $(f).addClass("active-dot");
+
+      //reset dots
+      currentDot = $(".active-dot");
+      nextxDot = $(".active-dot").next();
+      prevxDot = $(".active-dot").prev();
+
+      //if no prev dot
+      if (prevxDot.length === 0) {
+        prevxDot = $(".bgsliderx-dotlist li:last-child");
+      }
+
+      //if no next dot
+      if (nextxDot.length === 0) {
+        nextxDot = $(".bgsliderx-dotlist li:first-child");
+      }
+
+      //clear interval and restart autoTimer
+      clearInterval(resetTimer);
+      autoTimer();
+
+    };
+
+    //the automatic timer with clear
+    var resetTimer;
+    function autoTimer(){
+
+      resetTimer= setInterval(function(){
+
+        changeSlide(nextx);
+        changeDots(nextxDot);
+
+      }, slideChangeTime);
+
+    };
+    //calling autoTimer for first start
+    autoTimer();
+
+
+    //on next Button click
+    $("#bgsliderx-next").click(function() {
+      //calling the change
+      changeSlide(nextx);
+      changeDots(nextxDot);
+    });
+
+    //on previous Button click
+    $("#bgsliderx-prev").click(function() {
+      //calling the change
+      changeSlide(prevx);
+      changeDots(prevxDot);
+    });
+
+
+
+    /*dotted*/
+
+    $(".bgsliderx-dotlist li:nth-child(1)").click(function(){
+      changeSlide(".bgsliderx-list li:nth-child(1)");
+      changeDots(".bgsliderx-dotlist li:nth-child(1)");
+    });
+
+    $(".bgsliderx-dotlist li:nth-child(2)").click(function(){
+      changeSlide(".bgsliderx-list li:nth-child(2)");
+      changeDots(".bgsliderx-dotlist li:nth-child(2)");
+    });
+
+    $(".bgsliderx-dotlist li:nth-child(3)").click(function(){
+      changeSlide(".bgsliderx-list li:nth-child(3)");
+      changeDots(".bgsliderx-dotlist li:nth-child(3)");
+    });
+
+    $(".bgsliderx-dotlist li:nth-child(4)").click(function(){
+      changeSlide(".bgsliderx-list li:nth-child(4)");
+      changeDots(".bgsliderx-dotlist li:nth-child(4)");
+    });
+
+
+}; //cardSlider end
+</script>
+
+

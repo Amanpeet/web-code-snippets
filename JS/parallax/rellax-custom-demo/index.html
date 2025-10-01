@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rellax.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      color: #222;
+      text-align: center;
+      background: #f2f2f2;
+      font-family: sans-serif;
+    }
+
+    .parallax-box {
+      overflow: hidden;
+      position: relative;
+      height: 500px;
+      border: 1px solid black;
+      /* margin-bottom: 30px; */
+    }
+
+    .rellax-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rellax-fg {
+      position: absolute;
+      top: 10%;
+      left: 40%;
+      z-index: 10;
+      width: 20%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <br><br><br><br>
+    <h2>JUST RELLAX</h2>
+    <br><br><br><br>
+  </section>
+
+  <div class="parallax-box">
+    <img class="rellax rellax-bg" data-rellax-speed="-12" data-rellax-percentage="0.6" src="img/bg0.jpg" />
+    <img class="rellax rellax-fg" data-rellax-speed="-6" src="img/storm.png" />
+  </div>
+
+  <div class="parallax-box">
+    <img class="rellax rellax-bg" data-rellax-speed="-6" data-rellax-percentage="0.6" src="img/bg1.jpg" />
+  </div>
+
+  <div class="parallax-box">
+    <img class="rellax rellax-bg" data-rellax-speed="-3" data-rellax-percentage="0.8" src="img/bg2.jpg" />
+  </div>
+
+  <div class="parallax-box">
+    <img class="rellax rellax-bg" data-rellax-speed="2" data-rellax-percentage="-0.1" src="img/bg3.jpg" />
+  </div>
+
+
+  <!-- <script src="js/rellax.js"></script> -->
+  <script src="js/rellax.min.js"></script>
+  <script>
+    //start rellax
+    // var rellax = new Rellax('.rellax');
+
+    var rellax = new Rellax('.rellax', {
+      breakpoints: [576, 768, 1201]
+    });
+
+    // refresh on resize
+    window.onresize = function(event) {
+      rellax.refresh();
+      console.log('refreshed');
+    };
+
+    //destroy on phones
+    if( getMobileOS() ){
+      rellax.destroy();
+      console.log('destroyed');
+    }
+
+    //check if phones
+    function getMobileOS() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      console.log('user agent: '+userAgent);
+      if (/windows phone/i.test(userAgent)) {
+        return true;
+      }
+      if (/android/i.test(userAgent)) {
+        return true;
+      }
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return true;
+      }
+      return false;
+    }
+  </script>
+
+</body>
+</html>

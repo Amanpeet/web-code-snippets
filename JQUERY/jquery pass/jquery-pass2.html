@@ -1,0 +1,45 @@
+<style>
+</style>
+<center>
+
+  <h3>Values received!</h3>
+  <a href="jquery-pass1.html">Back</a>
+
+</center>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  retriveVals();
+});
+
+function retriveVals() {
+
+  //declare array
+  var queryVars = [],
+    hash;
+  //pass value to array from url after splitting
+  var q = document.URL.split('?')[1];
+  if (q != undefined) {
+    q = q.split('&');
+    for (var i = 0; i < q.length; i++) {
+      hash = q[i].split('=');
+      queryVars.push(hash[1]);
+      queryVars[hash[0]] = hash[1];
+    }
+  } else {
+    alert("No values, Redirecting back");
+    window.location.href = "jquery-pass1.html";
+  }
+
+  //passing values to variables
+  var passedVal1 = queryVars["passVal1"];
+  var passedVal2 = queryVars["passVal2"];
+
+  // showing values received
+  //alert("Values received were: " + passedVal1 +" & "+ passedVal2);
+  $("h3").append(" <br />" + passedVal1);
+  $("h3").append(" <br />" + passedVal2);
+
+};
+</script>

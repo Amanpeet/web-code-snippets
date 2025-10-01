@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Hello, world!</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <style>
+
+  .carousel-control-next, .carousel-control-prev {
+    width: 5%;
+    border: 1px solid #000;
+    background: rgba(0,0,0,0.7);
+  }
+
+  @media (min-width: 768px) {
+
+    /* show 3 items */
+    .carousel-inner .active,
+    .carousel-inner .active+.carousel-item,
+    .carousel-inner .active+.carousel-item+.carousel-item,
+    .carousel-inner .active+.carousel-item+.carousel-item+.carousel-item {
+      display: block;
+    }
+
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item,
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item,
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item+.carousel-item {
+      transition: none;
+    }
+
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+      position: absolute;
+      top: 0;
+      right: -25%;
+      z-index: -1;
+      display: block;
+      visibility: visible;
+    }
+
+    /* left or forward direction */
+    .active.carousel-item-left+.carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left+.carousel-item,
+    .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item,
+    .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item,
+    .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+
+    /* farthest right hidden item must be abso position for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      display: block;
+      visibility: visible;
+    }
+
+    /* right or prev direction */
+    .active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right+.carousel-item,
+    .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item,
+    .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item,
+    .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+      display: block;
+      visibility: visible;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <h1>item by item</h1>
+  <div class="container-fluid">
+
+    <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
+      <div class="carousel-inner row w-100 mx-auto" role="listbox">
+        <div class="carousel-item col-md-3 active">
+          <img class="img-fluid mx-auto" src="http://placehold.it/600x400" alt="">
+        </div>
+        <div class="carousel-item col-md-3">
+          <img class="img-fluid mx-auto" src="http://placehold.it/600x400" alt="">
+        </div>
+        <div class="carousel-item col-md-3">
+          <img class="img-fluid mx-auto" src="http://placehold.it/600x400" alt="">
+        </div>
+        <div class="carousel-item col-md-3">
+          <img class="img-fluid mx-auto" src="http://placehold.it/600x400" alt="">
+        </div>
+        <div class="carousel-item col-md-3">
+          <img class="img-fluid mx-auto" src="http://placehold.it/600x400" alt="">
+        </div>
+        <div class="carousel-item col-md-3">
+          <img class="img-fluid mx-auto" src="http://placehold.it/600x400" alt="">
+        </div>
+        <div class="carousel-item col-md-3">
+          <img class="img-fluid mx-auto" src="http://placehold.it/600x400" alt="">
+        </div>
+        <div class="carousel-item col-md-3">
+          <img class="img-fluid mx-auto" src="http://placehold.it/600x400" alt="">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+        <span class="">Previous</span>
+      </a>
+      <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
+        <span class="">Next</span>
+      </a>
+    </div>
+    
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script>
+  //Allows bootstrap carousels to display 3 items per page rather than just one
+  $('#carouselExample').on('slide.bs.carousel', function(e) {
+
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 4;
+    var totalItems = $('.carousel-item').length;
+
+    if (idx >= totalItems - (itemsPerSlide - 1)) {
+      var it = itemsPerSlide - (totalItems - idx);
+      for (var i = 0; i < it; i++) {
+        // append slides to end
+        if (e.direction == "left") {
+          $('.carousel-item').eq(i).appendTo('.carousel-inner');
+        } else {
+          $('.carousel-item').eq(0).appendTo('.carousel-inner');
+        }
+      }
+    }
+  });
+  </script>
+</body>
+
+</html>

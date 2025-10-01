@@ -1,0 +1,102 @@
+<style>
+#site-navigation .navbar-nav .dropdown-menu {
+	margin: 0;
+	padding: 0;
+	border: 1px solid #ccc;
+}
+
+#site-navigation .navbar-nav a.dropdown-item {
+	padding: 10px 20px;
+	border-bottom: 1px solid #ddd;
+	font-size: 14px;
+	color: #555;
+}
+
+#site-navigation .nav.navbar-nav > li ul li.dropdown .dropdown-menu {
+  display: none;
+	width: auto;
+	left: 100%;
+	top: -1px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #ccc;
+}
+
+#site-navigation .nav.navbar-nav > li ul li.dropdown .dropdown-menu.show {
+  display: block;
+}
+
+#site-navigation .nav.navbar-nav > li ul li.dropdown .dropdown-toggle::after {
+	position: absolute;
+  top: 45%;
+  right: 8px;
+	transform: rotate(-90deg);
+}
+</style>
+
+<script>
+// Bootstrap menu on hover
+$("#site-navigation .nav.navbar-nav > li ul li.dropdown > a").addClass('dropdown-toggle');
+const $dropdown = $(".dropdown");
+const $dropdownMenu = $(".dropdown-menu");
+$(window).on("load resize", function() {
+  if (this.matchMedia("(min-width: 768px)").matches) {
+    $dropdown.hover(
+      function() {
+        const $this = $(this);
+        $this.addClass('show');
+        $this.children($dropdownMenu).addClass('show');
+      },
+      function() {
+        const $this = $(this);
+        $this.removeClass('show');
+        $this.children($dropdownMenu).removeClass('show');
+      }
+    );
+  } else {
+    $dropdown.off("mouseenter mouseleave");
+  }
+});
+</script>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img class="logo horizontal-logo" src="horizontal-logo.svg" alt="forecastr logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        ...
+      </ul>
+    </div>
+  </div>
+</nav>

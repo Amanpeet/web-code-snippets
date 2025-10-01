@@ -1,0 +1,65 @@
+<div class="accordion-wrap">
+
+  <div class="accordion-item">
+    <div class="accordion-toggle"><a href="">Panel 1</a></div>
+    <div class="accordion-content">Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-toggle"><a href="">Panel 1</a></div>
+    <div class="accordion-content">Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-toggle"><a href="">Panel 1</a></div>
+    <div class="accordion-content">Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</div>
+  </div>
+
+</div>
+
+
+<style>
+  .accordion-wrap {
+    margin: 50px;
+  }
+
+  .accordion-wrap .accordion-item {
+    padding:0;
+    border: 1px solid #ccc;
+    border-top:none;
+  }
+  .accordion-wrap .accordion-item:first-of-type {
+    border-top:1px solid #ccc;;
+  }
+
+  .accordion-wrap .accordion-item .accordion-toggle {
+    background: #eee;
+    padding:16px;
+    cursor:pointer;
+  }
+
+  .accordion-wrap .accordion-item .accordion-content {
+    display: none;
+    background: #fafafa;
+    padding:16px;
+    cursor:pointer;
+  }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script>
+  $(function() {
+
+    var allPanels = $(".accordion-content").hide();
+
+    $(".accordion-toggle").click(function() {
+      
+      // allPanels.slideUp();
+      // $(this).closest(".accordion-item").find(".accordion-content").slideDown();
+
+      $(this).closest(".accordion-item").find(".accordion-content").slideToggle();
+      return false;
+    });
+
+  });
+</script>

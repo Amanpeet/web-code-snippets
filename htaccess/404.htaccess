@@ -1,0 +1,11 @@
+RewriteEngine on
+ErrorDocument 404 http://careerpointchd.net/404.php
+
+# RewriteCond %{HTTP_HOST} ^careerpointchd.net [NC]
+# RewriteRule ^(.*)$ http://careerpointchd.net/$1 [L,R=301,NC]
+# RewriteRule ^/page1.html$ /dir1/page.html [R=301,L]
+
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^careerpointchd.net [NC]
+RewriteRule ^(.*)$ http://www.careerpointchd.net/$1 [L,R=301]

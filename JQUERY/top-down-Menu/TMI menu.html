@@ -1,0 +1,212 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul{list-style: inside none;}
+h2, ul{margin: 20px 100px;}
+ul li{margin-bottom: 10px;}
+h1.logo{margin: 2px 100px; display: inline-block; font-weight: normal;}
+section{width:500px; margin:auto; line-height:175%; letter-spacing:2px;}
+
+
+/******* Main Menu ********/
+html, body{height: 100%; overflow: hidden; font-family: calibri, sans;}
+
+.main-menu{
+	display: none;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;	
+	position: absolute;
+	top:0px;
+	left:0px;
+	border:2px solid #4A79FF;
+	background: #fafafa;
+}
+
+header{
+	border:1px solid #C9C9C9;
+	border-top:2px solid #4A79FF;
+	background: #EAEAEA;
+	padding: 30px;
+	overflow: hidden;
+}
+
+.menu-btn-open{
+	float: right;
+	border:1px solid #C9C9C9;
+	padding: 10px 16px;
+	margin-right: 130px;
+}
+
+.menu-btn-close-div{
+	overflow: auto;
+	display: block;
+	padding: 30px;
+}
+.menu-btn-close{
+	float: right;
+	padding: 10px 16px;
+	margin-right: 130px;
+	margin-right: 120px;
+}
+.menu-btn-open div,
+.menu-btn-close div{
+	background: #808080;
+	width: 30px;
+	height: 3px;
+	margin-bottom: 5px;
+}
+
+/*cross for close btn*/
+.menu-btn-close div:nth-child(1){
+	-webkit-transform: rotate(40deg);
+	    -ms-transform: rotate(40deg);
+	        transform: rotate(40deg);
+	-webkit-transform-origin: bottom left;
+	    -ms-transform-origin: bottom left;
+	        transform-origin: bottom left;
+	width: 40px;
+	margin-bottom: 15px;
+}
+.menu-btn-close div:nth-child(2){
+	visibility: hidden;
+	width: 27px;
+}
+.menu-btn-close div:nth-child(3){
+	-webkit-transform: rotate(-40deg);
+	    -ms-transform: rotate(-40deg);
+	        transform: rotate(-40deg);
+	-webkit-transform-origin: top left;
+	    -ms-transform-origin: top left;
+	        transform-origin: top left;
+	width: 40px;
+	margin-bottom: 10px;
+}
+
+/*menu lists*/
+.menu-list-div{
+	display: inline-block;
+	float: left;
+	width: 25%;
+}
+
+
+</style>
+
+<body>
+<!-- main menu must be child of body directly -->
+<div class="main-menu" >	
+	<div class="menu-btn-close-div">
+		<a href="#" class="menu-btn-close">
+			<div></div>
+			<div></div>
+			<div></div>
+		</a>	
+	</div>
+	
+	
+	<div class="menu-list-div">
+		<h2>BROWSE</h2>
+		<ul>
+			<li>Home</li>
+			<li>About</li>
+			<li>Contact</li>
+			<li>Request</li>
+			<li>Others</li>
+			<li>Our Works</li>
+			<li>Anything</li>
+		</ul>
+	</div>
+
+	<div class="menu-list-div">
+		<h2>USEFUL</h2>
+		<ul>
+			<li>Home</li>
+			<li>About</li>
+			<li>Contact</li>
+			<li>Request</li>
+			<li>Others</li>
+			<li>Our Works</li>
+			<li>Anything</li>
+		</ul>
+	</div>
+
+	<div class="menu-list-div">
+		<h2>OTHERS</h2>
+		<ul>
+			<li>Home</li>
+			<li>About</li>
+			<li>Contact</li>
+			<li>Request</li>
+			<li>Others</li>
+			<li>Our Works</li>
+			<li>Anything</li>
+		</ul>
+	</div>
+
+	<div class="menu-list-div">
+		<h2>MORE</h2>
+		<ul>
+			<li>Home</li>
+			<li>About</li>
+			<li>Contact</li>
+			<li>Request</li>
+			<li>Others</li>
+			<li>Our Works</li>
+			<li>Anything</li>
+		</ul>
+	</div>
+	
+</div>
+<!-- main menu end -->
+
+
+<header>
+	<h1 class="logo">Logo</h1>
+	<a href="#" class="menu-btn-open">
+			<div></div>
+			<div></div>
+			<div></div>
+	</a>
+</header>	
+
+<section>
+	<center>
+	<br /><br />
+	<h1>CONTENT</h1>
+	<br /><br />
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>		
+	</center>
+	
+</section>
+
+</body>
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+	//main menu toggle
+	$(".menu-btn-open").click(function(){
+		$(".main-menu").slideDown(300);
+	});
+	$(".menu-btn-close").click(function(){
+		$(".main-menu").slideUp(300);
+	});
+
+});
+
+</script>

@@ -1,0 +1,135 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition:all 0.3s ease;
+}
+
+body{
+	background: gainsboro;
+	position: relative;
+}
+
+button, h4 {
+  margin: 50px;
+}
+
+.nav-list-box {
+	overflow-y: auto;  
+  position: absolute;
+  top: 0px;  
+  left: -370px;
+  width: 360px;
+  /*fixed height needed to work properly*/
+  height: 320px;
+
+  padding-left: 40px;
+  z-index: 9999;  
+  
+  background: black;
+  color: white;
+  box-shadow: 1px 0px 2px black;
+}
+
+.nav-list {
+  overflow-y: auto;
+  list-style: none;  
+  margin-left: 80px;
+  /*border:1px solid gray;*/
+}
+
+/*.active {
+  left: -5px;
+}*/
+
+.active {
+  left: -5px;
+}
+
+.active2 {
+  left: 360px;
+}
+
+li{
+	margin:20px 0px;
+}
+
+</style>
+<div class="nav-list-box">
+  <ul class="nav-list">
+    <button class="menu-btn">Close</button>
+    <br /><br />
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <div class="holder">
+    <button class="menu-btn">MENU</button>    
+    <h4>Click anywhere else to close the menu when active.</h4>
+  </div>
+</div>
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+  var screenHeight = $(document).height();
+
+  $(".nav-list-box").css("height", screenHeight);
+  $(".nav-list-box, .active").css("transition", "all 0.3s ease");
+  //$("body, .active2").css("transition", "all 0.3s ease");
+
+  $(".menu-btn").click(function() {
+    $(".nav-list-box").toggleClass("active");
+    //$("body").toggleClass("active2");
+  });
+
+
+  $(document).mouseup(function(e) {
+    var container = $(".nav-list-box");
+
+    if ($('.nav-list-box').hasClass('active')) {
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        //container.hide();
+        $(".nav-list-box").toggleClass("active");
+      }
+    }
+
+  });
+
+});
+</script>

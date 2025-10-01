@@ -1,0 +1,125 @@
+<link media="all" rel="stylesheet" href="admit-card.css">
+
+<div id="print-area">
+  <div class="admit-card">
+    <div class="one-half front">
+      <div class="header">
+        <img class="logo-img" src="img/ssx-logo.png" alt="">
+        <div class="logo-text">
+          <h2 class="title">SINGHANIA UNIVERSITY</h2>
+          <h5 class="sub-title">Pacheri Bari, Jhunununu - 333515</h5>
+          <h5 class="sub-title">Rajasthan India</h5>
+        </div>
+      </div>
+      <div class="content">
+        <h3 class="heading">Student ID Card</h3>
+        <br clear="all" />
+        <div class="details">
+          <table class="">
+            <tbody>
+              <tr>
+                <td>Enrollment no.</td>
+                <td>148965956195</td>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td>Priya krishnan</td>
+              </tr>
+              <tr>
+                <td>Father's Name</td>
+                <td>Ram kumar</td>
+              </tr>
+              <tr>
+                <td>DOB</td>
+                <td>11-08-1998</td>
+              </tr>
+              <tr>
+                <td>School</td>
+                <td>School of education and research</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="sign">Student's Signature</p>
+        </div>
+        <div class="avatar">
+          <img src="img/user.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="one-half back">
+      <div class="header">
+        <table class="contact">
+          <tbody>
+            <tr>
+              <td>Contact no.</td>
+              <td>015-26487523</td>
+            </tr>
+            <tr>
+              <td>Email ID</td>
+              <td>info@singhaniauniversity.co.in</td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td>www.singhaniauniversity.co.in</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="content bg-back">
+        <table class="info">
+          <tbody>
+            <tr>
+              <td>Course</td>
+              <td>Bachelor of commerce
+                <br> commerce </td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td>Alangh, District Raigarh</td>
+            </tr>
+            <tr>
+              <td>Signature</td>
+              <td><img class="img/sign-img" src="sign.png" alt=""></td>
+            </tr>
+            <tr>
+              <td>Enrolled</td>
+              <td>06-12-2017</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<div style="text-align: center; margin: 20px;">
+	<br clear="all"><br>
+	<button type="button" id="print-btn">PRINT</button>	
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$('#print-btn').click(function(){
+		PrintElem('print-area');
+		console.log('printed');
+	});
+
+	function PrintElem(elem)	{
+	    var mywindow = window.open('', 'PRINT', 'height=600,width=1100');
+
+	    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+      mywindow.document.write( '<link rel=\'stylesheet\' href=\'admit-card.css\' type=\'text/css\' media=\'all\'/>' ); // attach stylesheet with print
+      mywindow.document.write('</head><body >');
+      mywindow.document.write('<h1>' + document.title  + '</h1>');
+      mywindow.document.write(document.getElementById(elem).innerHTML);
+      mywindow.document.write('</body></html>');
+
+	    mywindow.document.close(); // necessary for IE >= 10
+	    mywindow.focus(); // necessary for IE >= 10*/
+
+	    mywindow.print();
+	    mywindow.close();
+
+	    return true;
+	}
+</script>

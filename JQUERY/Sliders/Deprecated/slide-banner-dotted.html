@@ -1,0 +1,278 @@
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/*Background*/
+
+#bgslider-container {
+  height: 200px;
+  width: 200px;  
+  /*overflow: hidden;*/
+  border:1px solid black;
+  z-index: -1;
+}
+
+.bgslider-list{
+  list-style: none;
+  position: relative;
+  /*left: -100%;*/
+  width: 1200px;
+  height: 100%;
+  border:1px dashed green;
+  /*overflow: auto;*/
+  overflow-y:hidden;
+  overflow-x:auto; 
+  display: block;
+}
+
+.bgslider-list li {
+  float: left;
+  height: 100%;
+  position: relative;
+  height: 730px;
+  /*width: 800px;*/
+  border-left:1px solid red;
+}
+
+.bgslider-list li img {  height: 100%;  /*width: 100%;*/}
+.slider1 {  background: url("http://placehold.it/1371x480") no-repeat;}
+.slider2 {  background: url("http://placehold.it/1372x480") no-repeat;}
+.slider3 {  background: url("http://placehold.it/1373x480") no-repeat;}
+.slider4 {  background: url("http://placehold.it/1374x480") no-repeat;}
+.slider5 {  background: url("http://placehold.it/1375x480") no-repeat;}
+
+
+.slide-x{
+  color:red;
+  font-weight: bold;
+  /*transition:all 0.3s ease;*/
+}
+
+
+
+#bgslider-buttons span{
+  cursor:pointer;
+  border:1px solid #c0c0c0;
+}
+
+#bgslider-indicators {
+/*  position: absolute;
+  bottom: 0;*/
+  z-index: 99;
+}
+
+#bgslider-indicators ul {
+  list-style: none;
+}
+
+#bgslider-indicators ul li {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 20px;
+  width: 20px;
+}
+
+.active-dot {
+  background: dodgerblue;
+}
+
+
+
+</style>
+
+
+
+<!-- the bgslider start -->
+<div id="bgslider-container">
+    <ul class="bgslider-list">
+      <li class="slider1 active-slide slide-x">1<!-- <img src="http://placehold.it/1371x480"> --></li>
+      <li class="slider2">2<!-- <img src="http://placehold.it/1372x480"> --></li>
+      <li class="slider3">3<!-- <img src="http://placehold.it/1373x480"> --></li>
+      <li class="slider4">4<!-- <img src="http://placehold.it/1374x480"> --></li>
+      <li class="slider5">5<!-- <img src="http://placehold.it/1375x480"> --></li>
+    </ul>
+  
+</div>
+
+<!-- dot indicators for slider -->
+<div id="bgslider-indicators">
+  <ul class="bgslider-dotlist">
+    <li id="dot-1" class="active-dot">1 </li>
+    <li id="dot-2"> 2</li>
+    <li id="dot-3"> 3</li>
+    <li id="dot-4"> 4</li>
+    <li id="dot-5"> 5</li>
+  </ul>
+</div>
+
+<!-- the prev and next buttons -->
+<div id="bgslider-buttons"><br />
+  <p><span id="bgslider-prev">Prev</span><br/><span id="bgslider-next">Next</span></p>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+  
+  /**************************************************
+    Background slider
+  **************************************************/
+
+  $(document).ready(function(){
+    bgslider();
+  });
+
+  function bgslider() {
+
+    //alert("asdf");
+
+    var slideTime= 400;
+    var slideChangeTime=4000;
+
+    var leftDefault= parseInt($(".bgslider-list").css('left'));
+
+    //setting width equal to container width
+    //var documentWidth=$(document).width();
+    var sliderWidth= $("#bgslider-container").innerWidth();    
+    $(".bgslider-list li").width(sliderWidth);
+
+
+    //creating left and right slide variables
+    var slideLeft= parseInt($(".bgslider-list").css('left')) + sliderWidth;
+    var slideRight= parseInt($(".bgslider-list").css('left')) - sliderWidth;
+
+    var slide2=parseInt($(".bgslider-list").css('left')) + sliderWidth;
+    var slide3=parseInt($(".bgslider-list").css('left')) + sliderWidth*2;
+
+    //moving last slide previous to first one
+    //$(".bgslider-list li:first").before($(".bgslider-list li:last"));
+
+
+    //the automatic timer with clear
+    // var resetTimer;
+    // function autoTimer(){
+
+    //   resetTimer= setInterval(function(){
+
+    //     $(".bgslider-list").animate({'left': slideRight }, slideTime, function(){
+    //       $(".bgslider-list li:last").after($(".bgslider-list li:first"));
+    //       $(".bgslider-list").css('left', leftDefault);
+      
+
+    //       //$(".bgslider-list li").toggleClass("active-slide");
+
+    //       //for the little dots
+    //       var currentDot = $(".active-dot");
+    //       var nextDot=currentDot.next();
+    //       var prevDot=currentDot.prev();
+
+    //       if(nextDot.length === 0) {
+    //         nextDot = $('.bgslider-dotlist li').first();
+    //       }
+
+    //       currentDot.removeClass("active-dot");
+    //       nextDot.addClass("active-dot");
+
+    //     });
+
+    //   }, slideChangeTime);
+
+    // };
+
+    // //calling autoTimer for first start
+    // autoTimer();
+
+
+    //the previous btn function
+    $("#bgslider-prev").click(function(){
+      $(".bgslider-list").animate({'left': slideLeft }, slideTime, function(){
+
+        //$(".bgslider-list li:first").before($(".bgslider-list li:last"));
+        //$(".bgslider-list").css('left', leftDefault);
+
+        //$(".bgslider-list li").toggleClass("active-slide");
+
+        //for the little dots
+        var currentDot = $(".active-dot");
+        var nextDot=currentDot.next();
+        var prevDot=currentDot.prev();
+
+        if(prevDot.length === 0) {
+          prevDot = $('.bgslider-dotlist li').last();
+        }
+
+        currentDot.removeClass("active-dot");
+        prevDot.addClass("active-dot");
+
+        //clear interval and restart autoTimer
+        // clearInterval(resetTimer);
+        // autoTimer();
+
+      });
+    });
+
+
+    //the next button function
+    $("#bgslider-next").click(function(){
+      $(".bgslider-list").animate({'left': slideRight }, slideTime, function(){
+        //$(".bgslider-list li:last").after($(".bgslider-list li:first"));
+        //$(".bgslider-list").css('left', leftDefault);
+
+        //$(".bgslider-list li").toggleClass("active-slide");
+
+        //for the little dots
+        var currentDot = $(".active-dot");
+        var nextDot=currentDot.next();
+        var prevDot=currentDot.prev();
+
+        if(nextDot.length === 0) {
+          nextDot = $('.bgslider-dotlist li').first();
+        }
+
+        currentDot.removeClass("active-dot");
+        nextDot.addClass("active-dot");
+
+        //clear interval and restart autoTimer
+        // clearInterval(resetTimer);
+        // autoTimer();
+
+      });
+    });
+
+    //the dots functionality
+    $("#dot-1").click(function(){
+      $(".bgslider-list li").removeClass("slide-x");
+      $(".slider1").addClass("slide-x");      
+      $(".bgslider-list").animate({'left': slide1 }, slideTime);
+    });
+
+    $("#dot-2").click(function(){
+      $(".bgslider-list li").removeClass("slide-x");
+      $(".slider2").addClass("slide-x");
+      $(".bgslider-list").animate({'left': slide2 }, slideTime);
+    });
+
+    $("#dot-3").click(function(){
+      $(".bgslider-list li").removeClass("slide-x");
+      $(".slider3").addClass("slide-x");
+      $(".bgslider-list").animate({'left': slide3 }, slideTime);
+    });
+
+    $("#dot-4").click(function(){
+      $(".bgslider-list li").removeClass("slide-x");
+      $(".slider4").addClass("slide-x");
+    });
+
+    $("#dot-5").click(function(){
+      $(".bgslider-list li").removeClass("slide-x");
+      $(".slider5").addClass("slide-x");
+    });
+
+  }; //bgslider function end
+
+</script>
+

@@ -1,0 +1,233 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: gainsboro;
+  /*overflow: hidden;*/
+}
+
+
+/************************
+	CardStack Slider v1
+************************/
+
+div#sidebar-slider {}
+
+div#siderbar-slider-inner {
+  position: relative;
+  width: 380px;
+  height: 410px;
+  margin-left: 400px;
+}
+ul.sidebar-slider-list {
+  border: 2px dashed black;
+  width: 100%;
+  height: 100%;
+  /*overflow: hidden;*/  
+  position: relative;
+  list-style: none;
+}
+ul.sidebar-slider-list li {
+  border: 1px solid #626262;
+  position: absolute;
+  top: 0px;
+  left: 100%;
+  opacity:0.8;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+.active-slider-item {
+  z-index: 999;
+  left: 0px !important;
+}
+
+/*slider buttons*/
+#slider-buttons{
+	text-align: center;
+	margin-bottom: 10px;
+}
+#sidebar-slider-prev,
+#sidebar-slider-next {
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+/*dotted indicators*/
+#bgslider-indicators{
+	margin: auto;
+	text-align: center;
+}
+#bgslider-indicators ul {
+  list-style: none;
+}
+#bgslider-indicators ul li {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 20px;
+  width: 20px;
+}
+.active-dot {
+  background: #1F8FFD;
+}
+/** CardStack Slider end **/
+
+</style>
+
+<!-- cardStack slider v1 start -->
+<div id="sidebar-slider">
+  <div id="siderbar-slider-inner">
+    <ul class="sidebar-slider-list">
+      <li class="active-slider-item"><img src="http://placehold.it/371x400"></li>
+      <li><img src="http://placehold.it/372x400"></li>
+      <li><img src="http://placehold.it/373x400"></li>
+      <li><img src="http://placehold.it/374x400"></li>
+    </ul>
+  </div>
+</div>
+
+<!-- the prev and next buttons -->
+<div id="slider-buttons">
+  <br/>
+  <p><span id="sidebar-slider-prev">Prev</span><span id="sidebar-slider-next">Next</span></p>
+</div>
+
+<!-- the slider dots -->
+<div id="bgslider-indicators">
+  <ul class="bgslider-dotlist">
+    <li class="active-dot">1 </li>
+    <li> 2</li>
+    <li> 3</li>
+    <li> 4</li>
+  </ul>
+</div>
+
+<!-- cardStack slider v1 start -->
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  cardSlider();
+
+});
+
+function cardSlider() {
+
+    //declaring current next and previous cards 
+    var current = $(".active-slider-item");
+    var nextx = $(".active-slider-item").next();
+    var prevx = $(".sidebar-slider-list li:last-child");
+
+
+    //fucntion to change slides
+    function changeSlide(e){
+      current.removeClass("active-slider-item");
+      $(e).addClass("active-slider-item");
+
+      //reset variables
+      current = $(".active-slider-item");
+      nextx = $(".active-slider-item").next();
+      prevx = $(".active-slider-item").prev();
+
+      //other slides to left n right
+      prevx.css("left", "-100%");
+      nextx.css("left", "100%");
+
+      //if no prev slide
+      if (prevx.length === 0) {
+        prevx = $(".sidebar-slider-list li:last-child");
+      }
+
+      //if no next slide
+      if (nextx.length === 0) {
+        nextx = $(".sidebar-slider-list li:first-child");
+      }
+
+    };
+
+
+    //declaring dots
+    var currentDot = $(".active-dot");
+    var nextxDot = $(".active-dot").next();
+    var prevxDot = $(".bgslider-dotlist li:last-child");
+
+    //changing the dots
+    function changeDots(f){
+      $(".bgslider-dotlist li").removeClass("active-dot");
+      //current.removeClass("active-dot");
+      $(f).addClass("active-dot");
+
+      //reset dots
+      currentDot = $(".active-dot");
+      nextxDot = $(".active-dot").next();
+      prevxDot = $(".active-dot").prev();
+
+      //if no prev dot
+      if (prevxDot.length === 0) {
+        prevxDot = $(".bgslider-dotlist li:last-child");
+      }
+
+      //if no next dot
+      if (nextxDot.length === 0) {
+        nextxDot = $(".bgslider-dotlist li:first-child");
+      }
+
+    };
+
+
+
+    //on next Button click
+    $("#sidebar-slider-next").click(function() {
+      //calling the change
+      changeSlide(nextx);
+      changeDots(nextxDot);
+    });
+
+    //on previous Button click
+    $("#sidebar-slider-prev").click(function() {
+      //calling the change
+      changeSlide(prevx);
+      changeDots(prevxDot);
+    });
+
+
+
+    /*dotted*/
+
+    $(".bgslider-dotlist li:nth-child(1)").click(function(){
+      changeSlide(".sidebar-slider-list li:nth-child(1)");
+      changeDots(".bgslider-dotlist li:nth-child(1)");
+    });
+
+    $(".bgslider-dotlist li:nth-child(2)").click(function(){
+      changeSlide(".sidebar-slider-list li:nth-child(2)");
+      changeDots(".bgslider-dotlist li:nth-child(2)");
+    });
+
+    $(".bgslider-dotlist li:nth-child(3)").click(function(){
+      changeSlide(".sidebar-slider-list li:nth-child(3)");
+      changeDots(".bgslider-dotlist li:nth-child(3)");
+    });
+
+    $(".bgslider-dotlist li:nth-child(4)").click(function(){
+      changeSlide(".sidebar-slider-list li:nth-child(4)");
+      changeDots(".bgslider-dotlist li:nth-child(4)");
+    });
+
+
+
+  }; //cardSlider end
+</script>
+
+

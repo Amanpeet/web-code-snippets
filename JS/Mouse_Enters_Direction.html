@@ -1,0 +1,61 @@
+<style type="text/css">
+div {
+  border: 1px solid black;
+}
+
+#console {
+  background: #DDF;
+}
+
+#console h2 {
+  font-size: 1.5em;
+}
+</style>
+
+
+<div id="content">
+  <img src="http://25.media.tumblr.com/tumblr_ln778ig1qC1qeewzyo1_1280.gif" height="300" width="300" />
+</div>
+<div id="console">
+  <h2>Console</h2>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  $("img").hover(function(e) {
+    var edge = closestEdge(e.pageX, e.pageY, $(this).width(), $(this).height());
+    log(edge);
+  }, function(e) {
+    log("out");
+  });
+});
+
+function closestEdge(x, y, w, h) {
+  var topEdgeDist = distMetric(x, y, w / 2, 0);
+  var bottomEdgeDist = distMetric(x, y, w / 2, h);
+  var leftEdgeDist = distMetric(x, y, 0, h / 2);
+  var rightEdgeDist = distMetric(x, y, w, h / 2);
+  var min = Math.min(topEdgeDist, bottomEdgeDist, leftEdgeDist, rightEdgeDist);
+  switch (min) {
+    case leftEdgeDist:
+      return "left";
+    case rightEdgeDist:
+      return "right";
+    case topEdgeDist:
+      return "top";
+    case bottomEdgeDist:
+      return "bottom";
+  }
+}
+
+function log(msg) {
+  $("#console").append("<pre>" + msg + "</pre>");
+}
+
+function distMetric(x, y, x2, y2) {
+  var xDiff = x - x2;
+  var yDiff = y - y2;
+  return (xDiff * xDiff) + (yDiff * yDiff);
+}
+</script>

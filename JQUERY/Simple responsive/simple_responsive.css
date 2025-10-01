@@ -1,0 +1,90 @@
+/**********************
+Just the essentials
+**********************/
+
+*{
+	box-sizing:border-box;
+	margin:0; padding:0;
+	}
+	
+body{
+	min-width:320px;
+	max-width:1200px;
+	margin:auto;	/*TO CENTER*/
+	padding:10px;
+	border:1px solid gray;
+	font-family:Helvetica, sans-serif;
+	}
+	
+	
+/*=============*/
+
+
+
+section{
+  height: 400px;  
+  margin-bottom:10px;
+  border:1px solid grey;
+}
+
+/*THE HEADING CLASS*/
+.heading{  
+  background: lightgray;
+  text-align:center;
+}
+
+
+
+/*************************************
+	THE QUADRO MEDIA QUERIES STYLE
+**************************************/
+
+
+/*  for width between 480 & 768   */
+@media all and (min-width: 320px) {	
+
+  section h1 {
+    font-size: 50px;
+	color:red;
+  }
+    section.module p {
+    font-size: 14px;
+  }
+}
+
+/*  for width between 480 & 768   */
+@media all and (min-width: 480px) {
+
+  section h1 {
+    font-size: 80px;
+	color:blue;
+  }
+    section.module p {
+    font-size: 16px;
+  }
+}
+
+/*  for width between 768 & 1024   */
+@media all and (min-width: 768px) {
+	
+  section h1 {
+    font-size: 120px;
+	color:green;
+  }
+    section p {
+    font-size: 20px;
+  }
+}
+
+
+/*  for width between 1024 & more   */
+@media all and (min-width: 1024px) {
+	
+  section h1 {
+    font-size: 140px;
+	color:gray;
+  }
+    section p {
+    font-size: 24px;
+  }
+}

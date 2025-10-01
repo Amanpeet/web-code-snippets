@@ -1,0 +1,60 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+	background: #D2D2D2;
+	height: 1800px;
+}
+
+
+/***** Back to top *****/
+.back-to-top{
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	height: 40px;
+	width: 40px;
+	background: #A1A1A1;
+	cursor: pointer;
+}
+
+</style>
+
+<h2 style="text-align:center">Scroll Down</h2>
+
+<div class="back-to-top">
+	TOP
+</div>
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	backToTop();
+
+});
+
+function backToTop(){
+	$(".back-to-top").css("display","none");
+	$(window).scroll(function(){
+		if($(window).scrollTop() > 0 ){
+			$(".back-to-top").fadeIn(300);
+		} else {
+			$(".back-to-top").fadeOut(300);
+		}		
+	});
+	$(".back-to-top").click(function(){
+		$("html, body").animate({
+			scrollTop: 0
+		}, 500);
+	});
+};
+
+
+</script>

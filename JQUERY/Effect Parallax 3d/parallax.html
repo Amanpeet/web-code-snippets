@@ -1,0 +1,159 @@
+<style>
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html, body{ height: 100%; }
+/*img{ max-width: 100%; }*/
+
+/* the actual parallax css */
+
+.container{
+	background: #1C3549;
+	height: 1000px;
+	color: #fff;
+}
+.container h1{
+	text-align: center;
+}
+
+/****************************/
+
+.wrapper{
+	position: relative;
+	height: 100%;
+	width: 100%;	
+	border-bottom: none;
+	overflow: hidden;
+	background: #0C171F;
+	/*border: 2px dashed #228B22;*/
+}
+
+.wrapper div{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	/*box-shadow: 0 -32px 36px rgba(0, 0, 0, 0.6);*/
+}
+
+.wrapper div img{
+	/*filter: drop-shadow(0px -20px 6px rgba(0, 0, 0, 0.8));*/
+	position: relative;
+	left: 0;
+	/*height: 100%;*/
+	width: 120%;
+	margin-left: -10%;
+}
+
+.one{
+	z-index: 10;
+}
+
+.two{
+	z-index: 20;
+}
+
+.three{
+	z-index: 30;
+}
+
+
+
+</style>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+
+	$(window).scroll(function () { 
+
+	   $('.one').css({
+	      'top': ($(this).scrollTop() / 2) + "px"
+	   }); 
+
+	   $('.two').css({
+	      'top': ($(this).scrollTop() / 3) + "px"
+	   }); 
+
+	});
+
+
+
+
+	//the shadow effect
+
+	var w = $(".wrapper").width();
+	var h = $(".wrapper").height();
+	var z, r;
+	//alert(w/2+" x " +h);
+
+
+	$('div').mousemove(function(event){
+	    //get x y cordinates of mouse in div
+	    var x = event.pageX;
+	    var y = event.pageY;
+
+	    //calculating center point (rounded n positive)
+	    var a= Math.round(w/2-x);
+	    var b= Math.round(h-y);
+
+	    //only if value is more than zero
+	    if ((a != 0 && b!=0)) {          
+	      $("p span#X").text(a);
+	      $("p span#Y").text(b);
+
+	      //calculating blur (getting small number)
+	      z = Math.round((a+b)/40);
+	      $("p span#Z").text(z);
+
+	      //applying shadow
+	      $(".one img").css("filter","drop-shadow("+z*0.8+"px -20px 6px rgba(0, 0, 0, 0.8))");
+	      $(".one img").css("left",z*5+"px");
+
+	      $(".two img").css("filter","drop-shadow("+z*0.9+"px -20px 6px rgba(0, 0, 0, 0.8))");
+	      $(".two img").css("left",z*3.5+"px");
+	      
+	      $(".three img").css("filter","drop-shadow("+z+"px -20px 6px rgba(0, 0, 0, 0.8))");
+	      $(".three img").css("left",z*2+"px");
+
+
+	    }
+	});
+
+
+
+});
+	
+</script>
+
+<body>
+
+	<div class="wrapper">
+
+		<div class="one">
+			<img src="img/slide1.png" />
+		</div>
+
+		<div class="two">
+			<img src="img/slide2.png" />
+		</div>
+
+		<div class="three">
+			<img src="img/slide3.png" />
+		</div>
+		
+	</div>
+
+	<div class="container">
+		<h1>A</h1>
+		<p>
+		  Cord X <span id="X">0</span><br />
+		  Cord Y <span id="Y">0</span><br />
+		  Move Z <span id="Z">0</span>
+		</p>
+	</div>
+	
+
+
+</body>
+

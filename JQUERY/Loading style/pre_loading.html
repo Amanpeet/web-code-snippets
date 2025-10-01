@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Loading screen test! </title>
+
+  <meta charset="utf-8" />
+  <meta name="author" content="me, who else!">
+  <meta name="description" content="Webpage description" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      max-width: 70%;
+      margin: auto;
+      /*TO CENTER*/
+    }
+
+    div#wrapper {
+      background: white;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    /* Loader style */
+
+    .no-js #loader {
+      display: none;
+    }
+
+    .js #loader {
+      display: block;
+      position: absolute;
+      left: 100px;
+      top: 0;
+    }
+
+    .se-pre-con {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      /*background:url(images/Preloader_2.gif) center no-repeat #fff;*/
+    }
+
+    .classx {
+      background-color: dimgray;
+      display: flex;
+    }
+
+    .classx img {
+      border-radius: 50% 50%;
+      margin: auto;
+    }
+  </style>
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+
+  <script>
+    //paste this code under head tag or in a seperate js file.
+    // Wait for window load
+    $(window).load(function () {
+      // Animate loader off screen
+      $(".se-pre-con").fadeOut("slow");
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <div class="se-pre-con classx">
+    <img src="images/Preloader_8.gif" alt="">
+  </div>
+
+  <div id="wrapper">
+    <!--wrapper start-->
+
+    <img src="http://wallsaved.com/wp-content/uploads/2014/04/ultra-high-definition-wallpapers.jpg" width="100%" />
+
+  </div>
+
+</body>
+</html>

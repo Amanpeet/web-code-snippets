@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Amanz Galzor">
+
+  <style>
+  .cropit-preview {
+    background-color: #f8f8f8;
+    background-size: cover;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 240px;
+    height: 240px;
+    margin: 10px 0;
+  }
+  .cropit-preview .cropit-preview-image {
+    max-width: initial;
+  }
+  .cropit-preview-image-container {
+    cursor: move;
+  }
+  .secret_picture_pre {
+    height: 100px;
+    border-radius: 3px;
+  }
+  </style>
+</head>
+
+<body class="" id="page-top">
+  <div class="content-wrapper">    
+    <h3>Upload Photo</h3>
+
+    <div class="image-editor text-center">
+      <input type="file" class="cropit-image-input">
+      <div class="cropit-preview"></div>
+      <div class="">
+        <div class="">
+          <small>Rotate</small><br>
+          <button type="button" class="btn rotate-ccw"> left </button>
+          <button type="button" class="btn rotate-cw"> right </button>
+        </div>
+        <div class="">
+          <small>Resize</small><br>
+          <input type="range" class="form-control cropit-image-zoom-input">
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary export">EXPORT</button>
+    </div>
+    
+    <h3>Form Data</h3>
+    <form class="file-form" enctype="multipart/form-data" method="post" action="">
+      <div>
+        <input type="hidden" name="secret_picture" id="secret_picture" required>
+        Little Preview:<br>
+        <img class="secret_picture_pre" src="" alt="">
+        <pre class="data64"> </pre>
+      </div>
+    </form>
+
+  </div><!-- /.container-fluid-->
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.cropit.js"></script>
+  <script>
+    $(document).ready(function() {
+      console.log("footer jquery initilized.");
+
+      /* intilize */
+      $('.image-editor').cropit({
+        width: 240,
+        height: 240,
+        previewSize: { width: 240, height: 240 },
+      });
+
+      /* to reset if multiple instances */
+      // $('.image-editor').cropit('destroy');
+      // $('.cropit-image-input').val('');
+      // $('.cropit-preview').find('img').remove();
+
+      /* Initiate Cropit Export */
+      $('.image-editor .export').click(function() {
+        var imageData = $('.image-editor').cropit('export');
+
+        // window.open(imageData);
+        $(".secret_picture").val(imageData);
+        $(".secret_picture_pre").attr('src', imageData);
+        $(".data64").text(imageData);
+
+        console.log('secret_picture set');
+      });
+
+      $('.image-editor .rotate-cw').click(function() {
+        $('.image-editor').cropit('rotateCW');
+      });
+      $('.image-editor .rotate-ccw').click(function() {
+        $('.image-editor').cropit('rotateCCW');
+      });
+
+    });
+  </script>
+</body>
+</html>
+
+<!-- 
+<?php
+  // file 1 base64
+  $secret_picture = mysqli_real_escape_string($conn, $_POST['secret_picture']);
+  $uniqd = round(microtime(true));
+
+  list($type, $secret_picture) = explode(';', $secret_picture);
+  list(, $secret_picture)      = explode(',', $secret_picture);
+  $secret_picture_org          = base64_decode($secret_picture);
+  $info1        = getimagesizefromstring($secret_picture_org);
+  $extension1   = explode('/', $info1['mime'] )[1];
+  $newfilename1 = $uniqd . '_picture' . '.' . $extension1;
+  file_put_contents("uploads/".$newfilename1, $secret_picture_org);
+?> 
+-->

@@ -1,0 +1,268 @@
+<style>
+/*
+font-family: 'Dosis', sans-serif;
+font-family: 'Open Sans', sans-serif;
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Dosis:300,400|Open+Sans:300,400);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+html,
+body {
+  overflow: hidden;
+  border: 10px solid black;
+  height: 100%;
+  /*
+  background: gainsboro; 
+  background: linear-gradient(to bottom, #aaaaaa, #f9f9f9);*/
+  
+  background: #b2b2b2;
+  background: linear-gradient(to bottom, #b2b2b2 1%, #f2f2f2 100%);
+}
+/* go on then, styles go here. knock yourself out! */
+
+.profile-card {
+  background: whitesmoke;
+  position: relative;
+  height: 320px;
+  width: 560px;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 20px;
+  padding-right: 90px;
+  padding-right: calc(20px + 70px);
+  /*box-shadow: -26px 70px 5px -10px rgba(0, 0, 0, 0.4);*/
+  
+  box-shadow: -22px 60px 3px -10px rgba(0, 0, 0, 0.5);
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+header:after {
+  content: "";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  border: 1px solid red;
+}
+
+header img {
+  float: left;
+  margin-right: 20px;
+  width: 150px;
+  height: 140px;
+}
+
+header h1 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  letter-spacing: 2px;
+  font-variant: small-caps;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+header h2 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300;
+  font-size: 26px;
+  letter-spacing: 2px;
+  margin-top: 12px;
+  margin-bottom: 0px;
+}
+
+header h3 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-top: 16px;
+  margin-bottom: 0px;
+}
+
+.profile-bio {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 160%;
+  position: relative;
+  padding-left: 20px;
+}
+
+.profile-bio:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  height: 92%;
+  border-left: 2px solid rgba(0, 0, 0, 0.7);
+}
+
+.profile-social-links {
+  background: black;
+  height: 100%;
+  width: 70px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  list-style: none;
+  padding: 20px 0;
+}
+
+li {
+  height: 25%;
+  /*border:1px solid gray;*/
+}
+
+li img {
+  padding: 10px;
+  width: 40px;
+  display: block;
+  margin: 0 auto;
+  transform: translate(0%, 40%);
+  -webkit-transform: translate(0%, 40%);
+}
+
+li img:hover {
+  border: 1px solid white;
+  border-radius: 1px;
+  padding: 11px;
+  transition: all 0.3s ease;
+}
+/*part 2, the animations*/
+
+.profile-card {
+  -webkit-transform: perspective(1600px) rotateX(50deg) rotateY(0deg) rotateZ(-10deg) translateY(50%) scale(0.9);
+          transform: perspective(1600px) rotateX(50deg) rotateY(0deg) rotateZ(-10deg) translateY(50%) scale(0.9);
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+  -webkit-transform: perspective(1600px) rotateX(50deg) rotateY(0deg) rotateZ(-10deg) translateY(50%) scale(0.9);
+  -webkit-transform-origin: left center;
+  transition: all 0.4s ease;
+  -webkit-animation: hovertouch 1.3s ease-in-out infinite;
+          animation: hovertouch 1.3s ease-in-out infinite;
+}
+
+.profile-card:hover {
+  transform: perspective(1600px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(40%) scale(1);
+  -webkit-transform: perspective(1600px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(40%) scale(1);
+  box-shadow: -2px 4px 3px -1px rgba(0, 0, 0, 0.6);
+  -webkit-animation: none;
+          animation: none;
+}
+
+@-webkit-keyframes hovertouch {
+  0% {
+    top: 5px;
+    box-shadow: -22px 60px 3px -10px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    top: 10px;
+    box-shadow: -20px 54px 3px -10px rgba(0, 0, 0, 0.58);
+  }
+  100% {
+    top: 5px;
+    box-shadow: -22px 60px 3px -10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes hovertouch {
+  0% {
+    top: 5px;
+    box-shadow: -22px 60px 3px -10px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    top: 10px;
+    box-shadow: -20px 54px 3px -10px rgba(0, 0, 0, 0.58);
+  }
+  100% {
+    top: 5px;
+    box-shadow: -22px 60px 3px -10px rgba(0, 0, 0, 0.5);
+  }
+}
+</style>
+<!-- this is the markup. you can change the details (your own name, your own avatar etc.) but don’t change the basic structure! -->
+<aside class="profile-card">
+  <header>
+    <!-- here’s the avatar -->
+    <a href="http://tutsplus.com">
+      <img src="http://i1105.photobucket.com/albums/h348/amanzz/icons/amon_sq_zpsegwfhdch.jpg">
+      <!-- <img src="http://placehold.it/140x140"> -->
+    </a>
+    <!-- the username -->
+    <h1>Amon Windreaver</h1>
+    <!-- and role or location -->
+    <h2>Web Designer</h2>
+    <!-- and contact -->
+    <h3>binarymatter@gmail.com</h2>
+  </header>
+  <!-- bit of a bio; who are you? -->
+  <div class="profile-bio">
+    <p>Terence is an avid reader of science fiction, especially anything to do with aliens and tweed jackets. Most weekends, he can be found cataloguing his collection of rodent skeletons. and little more text to extend the lines upto the mark so that design could fit.</p>
+    <!-- <p> I am noob Web Designer who is learning how web and websites work. I am very interested in Web/Graphics designing and know Html/Css pretty well. Currently learning jQuery, javascript, photoshop and illustrator. Also, I love playing games on my pc. </p> -->
+  </div>
+  <!-- some social links to show off -->
+  <ul class="profile-social-links">
+    <!-- twitter - el clásico  -->
+    <li>
+      <a href="https://plus.google.com/u/0/108645304562399086290/">
+        <img src="http://i1105.photobucket.com/albums/h348/amanzz/icons/googleplus_zpslwfbe0y7.png">
+      </a>
+    </li>
+    <!-- envato – use this one to link to your marketplace profile -->
+    <li>
+      <a href="http://twitter.com/tutsplus">
+        <img src="http://i1105.photobucket.com/albums/h348/amanzz/icons/twitter_zps5l4gqgun.png">
+      </a>
+    </li>
+    <!-- envato – use this one to link to your marketplace profile -->
+    <li>
+      <a href="http://envato.com">
+        <img src="http://i1105.photobucket.com/albums/h348/amanzz/icons/Envato_zpsiznbb5qt.png">
+      </a>
+    </li>
+    <!-- codepen - your codepen profile-->
+    <li>
+      <a href="http://codepen.io/VoidBoy/">
+        <img src="http://i1105.photobucket.com/albums/h348/amanzz/icons/codepen_zpslubo4q3n.png">
+      </a>
+    </li>
+    <!-- add or remove social profiles as you see fit -->
+  </ul>
+</aside>
+<!-- that’s all folks! -->
+
+
+<!-- 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+</script>
+
+
+codepen
+https://lh5.googleusercontent.com/GBRPiyiOpVxztnzEyA9saEekCS7gsKBfd0qa94ksazFsySIRx2N3MYuu60voazlK5X6ASDefBnDUOcQ=w1332-h547
+
+envato;
+https://lh4.googleusercontent.com/68hfzVCarafSEC4emStWTRswfREvL4zLlVKfRJLhQbA7xD_hAX4YTKCeGcWHMO5dFQwGJtpR4maXFjQ=w1332-h547
+
+twitter;
+https://lh3.googleusercontent.com/HhFQN8ZkYn2nFndaSnIr2wOU47VRsHNyVGY3C63zaE_lwIIQE--OGawKwSaqtd1vcFpjr3Yq7S2su44=w1332-h547
+
+google+;
+https://lh6.googleusercontent.com/augHz_4j7RVjZnvwEhqp26bcae-jZGFjicQu04GYSpRxQIhsfdmybdmc8NXzrHc4L2SwWbo1tRwvAI8=w1332-h547
+
+ -->

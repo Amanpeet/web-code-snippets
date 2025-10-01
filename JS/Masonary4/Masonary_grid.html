@@ -1,0 +1,63 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="masonry.pkgd.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.grid').masonry({
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 200
+    });
+});
+</script>
+<style>
+ul{
+	list-style: none;
+}
+li {
+    background: #ddd;
+    border: 1px solid #000;
+}
+
+.grid-item {
+    width: 300px;
+    height: 300px;
+    background: #ddd;
+    border: 1px solid #000;
+}
+
+.grid-item--width2 {
+    width: 300px;
+    height: 350px;
+    background: #ddd;
+    border: 1px solid #000;
+}
+
+.grid-item--width3 {
+    width: 300px;
+    height: 400px;
+    background: #ddd;
+    border: 1px solid #000;
+}
+
+.grid-item--width4 {
+    width: 25%;
+    height: 400px;
+    background: #ddd;
+    border: 1px solid #000;
+}
+
+</style>
+
+<!-- <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'> -->
+<div class="grid">
+    <div class="grid-item grid-item--width2">content</div>
+    <div class="grid-item">content</div>
+    <div class="grid-item grid-item--width3">content</div>
+    <div class="grid-item">content</div>
+    <div class="grid-item grid-item--width3">content</div>
+    <div class="grid-item grid-item--width2">content</div>
+    <div class="grid-item grid-item--width3">content</div>
+    <div class="grid-item">content</div>
+    <div class="grid-item grid-item--width3">content</div>
+    <div class="grid-item">content</div>
+</div>

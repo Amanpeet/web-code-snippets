@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+<style>
+.div{ background:#333; color:#fff; width:50px; height:20px; margin:10px;}
+.pre{ background:#333; color:#fff; width:50px; height:20px; margin:10px;}
+.main{width:800px; margin:0 auto;}
+.main img{width:100%;}
+.img1, .img2, .img3{display:none;}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+
+function imgslider(){
+	
+	var count=1;	
+	$(".img1").show();	
+	
+	$("p").html(count);	
+
+function imgshow(){
+	
+	if(count===1){
+		$(".img1").show(1000);
+		$(".img2").hide();
+		$(".img3").hide();
+		
+		$("p").html(count);
+		}	
+
+	else if(count===2){		
+		$(".img1").hide();	
+		$(".img2").show(1000);
+		$(".img3").hide();		
+		
+		$("p").html(count);				
+		}
+		
+	else if(count===3){
+		$(".img1").hide();
+		$(".img2").hide();
+		$(".img3").show(1000);	
+				
+		$("p").html(count);		
+		//count=0;		
+		}
+}	
+
+
+	$('.div').click(function(){		
+	 count +=1;	
+	 imgshow();
+	 if(count>3){count=1; imgshow()}
+	 });
+	 
+	 $('.pre').click(function(){		
+	 count -=1;	
+	 imgshow();
+	 if(count<1){count=3; imgshow()}
+	 });
+
+
+}
+
+
+</script>
+<body onload="imgslider()">
+<div class="main">
+<img class="img1" src="img/337797_120834271359725_140666858_o.jpg" />
+<img class="img2" src="img/c.H.9c.a2a.International_photo.jpg" />
+<img class="img3" src="img/world-map-background1.jpg" />
+</div>
+<div class="div">next</div>
+<div class="pre">prev</div>
+<p>count</p>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<span class="cart-date"> <input type="text" class="datepickery" placeholder="Delivery Date"> </span> <br>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" defer="defer"></script>
+<script>
+  $( function() {
+    
+    //add holidays here
+    var disabledDates = ['11/23/2017', '12/25/2017', '12/31/2017', '11/23/2018', '12/25/2018', '12/31/2018'];
+    
+    var currentTime = new Date();
+    var timeCond = 0;
+    if( currentTime.getHours() <=12 ){
+      timeCond = 0;
+    } else {
+      timeCond = 1;
+    }
+    
+    function noWeekendsOrHolidays(date) { 
+      var noWeekend = $.datepicker.noWeekends(date); 
+      if (noWeekend[0]) { 
+        return disableDays(date); 
+      } else { 
+        return noWeekend; 
+      } 
+    } 
+
+    function disableDays(date) { 
+      for (var i = 0; i < disabledDates.length; i++) { 
+        if (new Date(disabledDates[i]).toString() == date.toString()) {              
+          return [false]; 
+        } 
+      } 
+      return [true]; 
+    }
+
+    function positionDatepicker(textbox, instance) {
+      var txtBoxOffset = $(this).offset();
+      var textBoxWidth = $(this).outerWidth();
+      var top = txtBoxOffset.top;
+      var left = txtBoxOffset.left;      
+      setTimeout(function () {
+        instance.dpDiv.css({
+          top: top + 0 , //you can adjust this value accordingly
+          left: left + textBoxWidth + 4 //show at the end of textBox
+        });
+      }, 0);
+    }
+
+    $('.datepickery').datepicker({
+      minDate: timeCond,
+      beforeShowDay: noWeekendsOrHolidays,
+      beforeShow: positionDatepicker,
+      firstDay: 1,
+    });
+    
+
+  } );
+</script>

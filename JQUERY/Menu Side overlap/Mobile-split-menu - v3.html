@@ -1,0 +1,131 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+	background: gainsboro;
+	overflow: hidden;
+}
+
+.wrapper{
+	border: 1px solid blue;
+	position: relative;
+	left:0px;
+}
+
+button, h4 {
+  margin: 50px;
+}
+
+.nav-list-box {
+	overflow-y: auto;  
+  position: absolute;
+  top: 0px;  
+  left: -370px;
+  width: 360px;
+  /*fixed height needed to work properly*/
+  height: 320px;
+  z-index: 9999;    
+  background: black;
+  color: white;
+  box-shadow: 1px 0px 2px black;
+}
+
+.nav-list {
+  overflow-y: auto;
+  list-style: none;  
+  margin-left: 80px;
+}
+
+.active-list {
+  left: 0px;
+}
+
+.active-wrapper {
+	/*always equal to width of list*/
+  left: 360px;
+}
+
+li{
+	margin:20px 0px 20px 50px;
+}
+
+</style>
+
+
+<body>
+
+<div class="nav-list-box">
+  <ul class="nav-list">
+    <button class="menu-btn">Close</button>
+    <br /><br />
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+    <li>List item </li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <div class="holder">
+    <button class="menu-btn">MENU</button>    
+    <h4>Click anywhere else to close the menu when active.</h4>
+  </div>
+</div>
+
+</body>
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+	//getting height of device
+  var screenHeight = $(document).height();
+  $(".nav-list-box").css("height", screenHeight);
+
+  // just to make it smooth
+  $(".nav-list-box, .active-list").css("transition", "all 0.3s ease");
+  $(".wrapper, .active-wrapper").css("transition", "all 0.3s ease");
+
+  //actual menu button to toggle
+  $(".menu-btn").click(function() {
+    $(".nav-list-box").toggleClass("active-list");
+    $(".wrapper").toggleClass("active-wrapper");
+  });
+
+
+});
+</script>

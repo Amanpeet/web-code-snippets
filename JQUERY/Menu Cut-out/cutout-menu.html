@@ -1,0 +1,193 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;    
+}
+body{overflow-x:hidden; font-family: calibri, sans;}
+ul{list-style: inside none;}
+h2, ul{margin: 20px 100px;}
+ul li{margin-bottom: 10px;}
+h1.logo{margin: 2px 100px; display: inline-block; font-weight: normal;}
+section{width:500px; margin:auto; line-height:175%; letter-spacing:2px;}
+
+
+/******* Main Menu ********/
+
+.mainu{
+	border-top:2px solid #2C80FF;
+	border-bottom:2px solid #2C80FF;	
+}
+.main-menu{
+	display: none;
+	overflow: hidden;
+	height: 360px;
+	width: 100%;	
+	position: relative;
+	padding-top: 20px;
+	background: #6C6C6C;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5) inset;
+	border-top:1px solid #2C80FF;
+	border-bottom:1px solid #2C80FF;	
+}
+.menu-btn{
+	float: right;
+	border:1px solid #C9C9C9;
+	padding: 10px 16px;
+	margin-right: 130px;
+}
+.menu-btn div{
+	background: #808080;
+	width: 30px;
+	height: 3px;
+	margin-bottom: 5px;
+	-webkit-transition:all 0.2s ease;
+	        transition:all 0.2s ease;
+}
+/*cross for close btn*/
+.close-btn div:nth-child(2){
+	visibility: hidden;
+	width: 27px;
+}
+.close-btn div:nth-child(1){
+	-webkit-transform: rotate(35deg);
+	    -ms-transform: rotate(35deg);
+	        transform: rotate(35deg);
+	-webkit-transform-origin: bottom left;
+	    -ms-transform-origin: bottom left;
+	        transform-origin: bottom left;
+	width: 27px;
+}
+.close-btn div:nth-child(3){
+	-webkit-transform: rotate(-35deg);
+	    -ms-transform: rotate(-35deg);
+	        transform: rotate(-35deg);
+	-webkit-transform-origin: top left;
+	    -ms-transform-origin: top left;
+	        transform-origin: top left;
+	width: 27px;
+}
+.menu-list-div{
+	display: inline-block;
+	float: left;
+	width: 25%;
+	color:white;
+}
+
+/*Body style*/
+header{
+	border:1px solid #C9C9C9;
+	background: #EAEAEA;
+	padding: 30px;
+	overflow: hidden;
+}
+
+
+</style>
+
+<body>
+<!-- main menu must be child of body directly -->
+
+
+
+<header>
+	<h1 class="logo">Logo</h1>
+	<a href="#" class="menu-btn">
+			<div></div>
+			<div></div>
+			<div></div>
+	</a>
+</header>	
+
+<div class="mainu">
+	<div class="main-menu" >		
+		<div class="menu-list-div">
+			<h2>BROWSE</h2>
+			<ul>
+				<li>Home</li>
+				<li>About</li>
+				<li>Contact</li>
+				<li>Request</li>
+				<li>Others</li>
+				<li>Our Works</li>
+				<li>Anything</li>
+			</ul>
+		</div>
+
+		<div class="menu-list-div">
+			<h2>USEFUL</h2>
+			<ul>
+				<li>Home</li>
+				<li>About</li>
+				<li>Contact</li>
+				<li>Request</li>
+				<li>Others</li>
+				<li>Our Works</li>
+				<li>Anything</li>
+			</ul>
+		</div>
+
+		<div class="menu-list-div">
+			<h2>OTHERS</h2>
+			<ul>
+				<li>Home</li>
+				<li>About</li>
+				<li>Contact</li>
+				<li>Request</li>
+				<li>Others</li>
+				<li>Our Works</li>
+				<li>Anything</li>
+			</ul>
+		</div>
+
+		<div class="menu-list-div">
+			<h2>MORE</h2>
+			<ul>
+				<li>Home</li>
+				<li>About</li>
+				<li>Contact</li>
+				<li>Request</li>
+				<li>Others</li>
+				<li>Our Works</li>
+				<li>Anything</li>
+			</ul>
+		</div>
+		
+	</div>
+	<!-- main menu end -->
+</div>
+
+<section>
+	<center>
+	<br /><br />
+	<h1>CONTENT</h1>
+	<br /><br />
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>		
+	</center>
+	
+</section>
+
+</body>
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+	//main menu toggle
+	$(".menu-btn").click(function(){
+		$(".main-menu").slideToggle(300);
+		$(".menu-btn").toggleClass("close-btn");
+	});
+
+});
+
+</script>

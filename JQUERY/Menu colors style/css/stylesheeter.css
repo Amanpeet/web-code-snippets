@@ -1,0 +1,298 @@
+/***********************************
+		Just the essentials
+***********************************/
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	transition: all 0.2s ease 0s;
+}
+
+/*Fonts yeah...*/
+@font-face{
+	font-family:fontx;	
+	src:url("../fonts/SourceSansPro-Regular.otf");
+	}
+@font-face{
+	font-family:fonty;	
+	src:url("../fonts/VarelaRound-Regular.otf");
+	}	
+@font-face{
+	font-family:fontz;
+	src:url("../fonts/Montserrat-Regular.otf");
+	}
+	
+header{
+	font-family:fontx;
+	}
+section{
+	font-family:fonty;
+	}
+footer{
+	font-family:fonty;
+	}
+
+	
+body{
+	/*min-width:320px;*/
+	min-width:1100px;
+	max-width:1100px;
+	margin:auto;	/*TO CENTER*/
+	/*font-family:fonty;*/
+	font-size:0.94em;
+	line-height:120%;
+	
+	background:white url(../images/bgtile.png) repeat fixed;
+	margin-bottom:10px;
+	box-shadow:0px 1px 2px gray;
+}
+	
+	
+a{
+	text-decoration:none;	
+	color:black;
+	transition: all 0.2s ease;
+}
+
+
+div#wrapper{
+	background:white;
+	width:100%;
+	min-height:100%;
+}
+
+hr{
+	margin:24px 10px;
+	opacity:0.4;
+	}
+	
+.center-text{
+	text-align:center !important;
+	}
+.center-margin{
+	margin:auto !important;
+	}
+.full-caps{
+	text-transform:uppercase !important;
+	}
+
+
+/**************************
+The banner controls
+**************************/
+
+#slides {
+    display:none;
+	z-index:-100;
+	height:360px;
+}
+#slides img{
+	width:100%;
+	display:block;
+	overflow:hidden;
+}
+
+.prev-btn a, .next-btn a{
+	color:white;
+	display:block;	
+	padding:10px;
+	}
+.prev-btn, .next-btn{
+	position:relative;
+	top:-250px;
+	background:black;
+	color:white;
+	z-index:100;
+	box-shadow:0px 0px 1px white;	
+	}
+
+.prev-btn{
+	float:left;
+	}
+.next-btn{
+	float:right;
+	}
+
+
+
+/**************************
+The header ofcourse
+**************************/
+
+header::after{
+	clear:both;
+	content:"";
+	display:block;
+	}
+	
+.topbar-div{
+	padding:10px;
+	padding-bottom:0px;
+	font-size:0.9em;
+	}
+.to-left{
+	float:left;
+	}
+.to-right{
+	float:right;
+	}
+	
+.topbar-div::after{
+	clear: both;
+    content: "";
+    display: block;
+	}
+	
+	
+div.heading-wrap{
+	padding:35px 0px;
+	}
+h1.main-title{
+	font-size:3em;
+	text-shadow:0px 0px 1px black;
+	text-align:center;
+	text-transform:uppercase;
+	}
+h1.sub-title{
+	font-size:1.1em;
+	text-shadow:0px 0px 1px black;
+	text-align:center;	
+	font-variant:small-caps;
+	margin-top:20px;
+	}
+
+	
+.banner-div{
+	background:Gainsboro;
+	width:100%;
+	height:200px;
+	position:relative;
+	}
+
+.banner-title{
+	font-size:2.4em;
+	text-transform:uppercase;
+	text-shadow:0px 0px 2px dimgray;
+	position:relative;
+	top:40%;
+}
+	
+
+
+/**************************
+all about the menu
+***************************/
+
+
+
+/************************/
+
+
+nav {
+	text-align: center;
+	text-transform:uppercase;
+	font-size:0.9em;
+	transition: all 0.4s ease 0s;
+	height:76px;
+}
+
+nav ul {
+    display: inline-table;
+    list-style: none;
+    position: relative;
+	z-index:100;
+}
+
+nav ul.list1 li:hover > ul {
+ /*   display: block;*/
+	visibility:visible;
+}
+
+nav ul::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+nav ul.list1 li {
+    float: left;
+	min-width:120px;	
+	border-bottom:4px solid transparent;
+	transition: all 0.4s ease 0s;
+}
+	
+nav ul.list1 ul.list2 {
+  /*  display: none;*/
+  	visibility:hidden;
+	position: absolute;
+    top: 100%;
+	left:0px;
+}
+
+nav ul li a {
+    display: block;
+	padding:5px 0px;
+	color:black;	
+}
+
+
+
+nav ul.list1 ul.list2 li {
+	float: left;
+  /*  float: none;*/
+    position: relative;
+	background:white;
+}
+
+nav ul ul li a{
+	display: block;
+	padding:10px 0px;
+	}
+
+.list3 li{
+	display:none;
+	}
+.list2 li:hover > .list3 li{
+	display:block;
+	}
+
+nav ul.list1 ul.list2 ul.list3 {
+    left: 0;
+    position: absolute;
+    top: 110%;
+}
+
+ul.list1 li:hover > a{
+	color:white !important;
+	}
+
+.list1 li:nth-child(1):hover{	background:orange;	}
+.list1 li:nth-child(2):hover{	background:dodgerblue;	}
+.list1 li:nth-child(3):hover{	background:forestgreen;	}
+.list1 li:nth-child(4):hover{	background:tomato;	}
+.list1 li:nth-child(5):hover{	background:gray;	}
+	
+
+.list1 li:nth-child(1):hover > .list2 li{	border-bottom:4px solid orange; background:white; }
+.list1 li:nth-child(2):hover > .list2 li{	border-bottom:4px solid dodgerblue; background:white;	}
+.list1 li:nth-child(3):hover > .list2 li{	border-bottom:4px solid forestgreen; background:white;	}
+.list1 li:nth-child(4):hover > .list2 li{	border-bottom:4px solid tomato;	background:white; }
+.list1 li:nth-child(5):hover > .list2 li{	border-bottom:4px solid gray; background:white;	}
+
+
+.list2 li:hover{
+	background:gainsboro !important;
+
+	}
+.list2 li a{
+	color:black !important;
+	}
+.list3 li{
+	background:white !important;
+	}
+.list3 li:hover{
+	background:gainsboro !important;
+	}
+	
+	

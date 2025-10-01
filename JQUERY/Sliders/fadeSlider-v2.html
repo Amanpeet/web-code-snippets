@@ -1,0 +1,255 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: gainsboro;
+  /*overflow: hidden;*/
+}
+
+
+/************************
+  fadeSlider v1
+************************/
+
+#slider-container {
+  position: relative;
+  width: 380px;
+  height: 410px;
+  margin-left: 400px;
+}
+
+ul.slider-list {
+  border: 2px dashed black;
+  width: 100%;
+  height: 100%;
+  /*overflow: hidden;*/
+  position: relative;
+  list-style: none;
+}
+
+ul.slider-list li {
+  border: 1px solid #626262;
+  position: absolute;
+  top: 0px;
+  /*left: 100%;*/
+  left: 0px;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.active-slide {
+  z-index: 999;
+  opacity: 1 !important;
+}
+
+
+/*slider buttons*/
+
+#slider-buttons {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#slider-prev,
+#slider-next {
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+
+/*dotted indicators*/
+
+#dots-container {
+  margin: auto;
+  text-align: center;
+}
+
+#dots-container ul {
+  list-style: none;
+}
+
+#dots-container ul li {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 20px;
+  width: 20px;
+}
+
+.active-dot {
+  background: #1F8FFD;
+}
+
+
+/** CardStack Slider end **/
+</style>
+
+<!-- fadeSlider v2 start -->
+<div id="slider-container">
+  <ul class="slider-list">
+    <li class="active-slide"><img src="http://placehold.it/371x400"></li>
+    <li><img src="http://placehold.it/372x400"></li>
+    <li><img src="http://placehold.it/373x400"></li>
+    <li><img src="http://placehold.it/374x400"></li>
+  </ul>
+</div>
+<!-- the prev and next buttons -->
+<div id="slider-buttons">
+  <br/>
+  <p><span id="slider-prev">Prev</span><span id="slider-next">Next</span></p>
+</div>
+<!-- the slider dots -->
+<div id="dots-container">
+  <ul class="dots-list">
+    <li class="active-dot">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+</div>
+<!-- fadeSlider v2 end -->
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  fadeSlider();
+
+});
+
+
+/***********************
+  fadeSlider v1
+************************/
+
+function fadeSlider() {
+
+
+  var slideChangeTime = 5000;
+
+  //declaring current next and previous cards 
+  var current = $(".active-slide");
+  var nextx = $(".active-slide").next();
+  var prevx = $(".slider-list li:last-child");
+
+
+  //fucntion to change slides
+  function changeSlide(e) {
+    current.removeClass("active-slide");
+    $(e).addClass("active-slide");
+
+    //reset variables
+    current = $(".active-slide");
+    nextx = $(".active-slide").next();
+    prevx = $(".active-slide").prev();
+
+    //if no prev slide
+    if (prevx.length === 0) {
+      prevx = $(".slider-list li:last-child");
+    }
+
+    //if no next slide
+    if (nextx.length === 0) {
+      nextx = $(".slider-list li:first-child");
+    }
+
+    //clear interval and restart autoTimer
+    clearInterval(resetTimer);
+    autoTimer();
+
+  };
+
+
+  //declaring dots
+  var currentDot = $(".active-dot");
+  var nextxDot = $(".active-dot").next();
+  var prevxDot = $(".dots-list li:last-child");
+
+  //changing the dots
+  function changeDots(f) {
+    $(".dots-list li").removeClass("active-dot");
+    //current.removeClass("active-dot");
+    $(f).addClass("active-dot");
+
+    //reset dots
+    currentDot = $(".active-dot");
+    nextxDot = $(".active-dot").next();
+    prevxDot = $(".active-dot").prev();
+
+    //if no prev dot
+    if (prevxDot.length === 0) {
+      prevxDot = $(".dots-list li:last-child");
+    }
+
+    //if no next dot
+    if (nextxDot.length === 0) {
+      nextxDot = $(".dots-list li:first-child");
+    }
+
+    //clear interval and restart autoTimer
+    clearInterval(resetTimer);
+    autoTimer();
+  };
+
+  //the automatic timer with clear
+  var resetTimer;
+
+  function autoTimer() {
+    resetTimer = setInterval(function() {
+      changeSlide(nextx);
+      changeDots(nextxDot);
+    }, slideChangeTime);
+
+  };
+  //calling autoTimer for first start
+  autoTimer();
+
+  //on next Button click
+  $("#slider-next").click(function() {
+    //calling the change
+    changeSlide(nextx);
+    changeDots(nextxDot);
+  });
+
+  //on previous Button click
+  $("#slider-prev").click(function() {
+    //calling the change
+    changeSlide(prevx);
+    changeDots(prevxDot);
+  });
+
+  /*dotted*/
+
+  $(".dots-list li:nth-child(1)").click(function() {
+    changeSlide(".slider-list li:nth-child(1)");
+    changeDots(".dots-list li:nth-child(1)");
+  });
+
+  $(".dots-list li:nth-child(2)").click(function() {
+    changeSlide(".slider-list li:nth-child(2)");
+    changeDots(".dots-list li:nth-child(2)");
+  });
+
+  $(".dots-list li:nth-child(3)").click(function() {
+    changeSlide(".slider-list li:nth-child(3)");
+    changeDots(".dots-list li:nth-child(3)");
+  });
+
+  $(".dots-list li:nth-child(4)").click(function() {
+    changeSlide(".slider-list li:nth-child(4)");
+    changeDots(".dots-list li:nth-child(4)");
+  });
+
+}; //fadeSlider end
+
+
+</script>

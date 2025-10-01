@@ -1,0 +1,15 @@
+<script>
+  //disable content copy tricks
+  $('img').bind('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+  $('body').on('contextmenu', 'img', function(e){
+    e.preventDefault();
+    return false;
+  });
+  $('body').bind('copy',function(e) {
+    e.preventDefault();
+    return false;
+  });
+</script>

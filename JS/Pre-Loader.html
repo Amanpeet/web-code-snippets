@@ -1,0 +1,37 @@
+<div id="preloader">
+  <div>
+    <img src="img/Preloader.gif" alt="loading...">
+    <h4>Loading Page</h4>
+  </div>
+</div>
+
+<style>
+  #preloader {
+    background: #fff;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+  .no-js #preloader {
+    display: none;
+  }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  // Wait for window load
+  $(window).load(function() {
+    $("#preloader").fadeOut(700);
+  });
+
+  //or
+  jQuery(document).ready(function( $ ) { //noconflicts
+    setTimeout(function(){
+      jQuery("#preloader").fadeOut();
+    }, 2000);
+  });
+</script>

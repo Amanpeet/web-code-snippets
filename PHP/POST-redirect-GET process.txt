@@ -1,0 +1,30 @@
+As you may know from your research, POST-redirect-GET looks like this:
+
+    The client gets a page with a form.
+    The form POSTs to the server.
+    The server performs the action, and then redirects to another page.
+    The client follows the redirect.
+
+For example, say we have this structure of the website:
+
+    /posts (shows a list of posts and a link to "add post")
+        /<id> (view a particular post)
+        /create (if requested with the GET method, returns a form posting to itself; if it's a POST request, creates the post and redirects to the /<id> endpoint)
+
+/posts itself isn't really relevant to this particular pattern, so I'll leave it out.
+
+/posts/<id> might be implemented like this:
+
+    Find the post with that ID in the database.
+    Render a template with the content of that post.
+
+/posts/create might be implemented like this:
+
+    If the request is a GET request:
+        Show an empty form with the target set to itself and the method set to POST.
+    If the request is a POST request:
+        Validate the fields.
+        If there are invalid fields, show the form again with errors indicated.
+        Otherwise, if all fields are valid:
+            Add the post to the database.
+            Redirect to /posts/<id> (where <id> is returned from the call to the database)

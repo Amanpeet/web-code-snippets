@@ -1,0 +1,48 @@
+<button type="button" class="btn btn-dark ml-5" onclick="PrintElem('printme')"> Print </button>
+<script>
+  function PrintElem(elem) {
+    var gethtml = document.getElementById('printme').innerHTML;
+    PrintFinal(gethtml);
+  }
+
+  function PrintFinal(data) {
+    var mywindow = window.open('', 'Print', 'height=600,width=800');
+    mywindow.document.open();
+    mywindow.document.onreadystatechange = function () {
+      if (this.readyState === 'complete') {
+        this.onreadystatechange = function () {};
+        mywindow.focus();
+        mywindow.print();
+        mywindow.close();
+      }
+    }
+    mywindow.document.write('<html><head><title>Print Application</title>');
+    mywindow.document.write('<link rel=\'stylesheet\' href=\'css/bootstrap.min.css\' type=\'text/css\' media=\'all\'/>'); // attach stylesheet with print
+    mywindow.document.write('<link rel=\'stylesheet\' href=\'css/sb-admin.css\' type=\'text/css\' media=\'all\'/>'); // attach stylesheet with print
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(data);
+    mywindow.document.write('data');
+    mywindow.document.write('</body></html>');
+    mywindow.document.close(); // necessary for IE >= 10
+    return true;
+  }
+
+  /*function PrintElemx(elem)	{
+    var mywindow = window.open('', 'PRINT', 'height=600,width=1100');
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write( '<link rel=\'stylesheet\' href=\'css/bootstrap.min.css\' type=\'text/css\' media=\'all\'/>' ); // attach stylesheet with print
+    mywindow.document.write( '<link rel=\'stylesheet\' href=\'css/sb-admin.css\' type=\'text/css\' media=\'all\'/>' ); // attach stylesheet with print
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10
+    mywindow.print();
+    mywindow.close();
+    return true;
+  }*/
+</script>
+
+<div id="printme">
+  <!-- content to print -->
+</div>

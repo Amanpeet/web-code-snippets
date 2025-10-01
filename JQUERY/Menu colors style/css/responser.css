@@ -1,0 +1,30 @@
+
+/*************************************
+	THE QUADRO MEDIA QUERIES STYLE
+**************************************/
+
+
+/*  for width between 320 & 480   */
+@media all and (min-width: 320px) {	
+
+
+}
+
+/*  for width between 480 & 768   */
+@media all and (min-width: 480px) {
+
+
+}
+
+/*  for width between 768 & 1024   */
+@media all and (min-width: 768px) {
+	
+
+}
+
+
+/*  for width between 1024 & more   */
+@media all and (min-width: 1024px) {
+	
+
+}

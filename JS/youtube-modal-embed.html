@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoModalLabel">Introducing Nimbarka</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <iframe src="" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function () {
+
+    // $("#videoModal").on('hidden.bs.modal', function (e) {
+    //   $("#videoModal iframe").attr("src", $("#videoModal iframe").attr("src"));
+    // });
+
+    //youtube embed modal
+    $(document).on('click', '.youtube-bdo-btn', function (e) {
+      var src = $(this).attr('data-src');
+      var width = $(this).attr('data-width');
+      var height = $(this).attr('data-height');
+      var allowfullscreen = $(this).attr('data-video-fullscreen');
+
+      $("#videoModal iframe").attr({
+        'src': src,
+        'height': height,
+        'width': width,
+        'allowfullscreen': allowfullscreen
+      });
+
+      $('#videoModal').on('hidden.bs.modal', function () {
+        $(this).find('iframe').html("");
+        $(this).find('iframe').attr("src", "");
+      });
+    });
+
+  });
+</script>

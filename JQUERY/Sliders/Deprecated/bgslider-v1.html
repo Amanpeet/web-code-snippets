@@ -1,0 +1,181 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+	width: 100%;
+  max-width: 100%;
+  border-right:1px solid dimgray;
+  border-left:1px solid dimgray;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: gainsboro;
+}
+
+/*here comes the slider*/
+
+#bgslider-container{	
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 480px;
+	top: 0px;
+	left: 0px;
+
+	border: 1px solid black;
+	background: tomato;
+}
+
+.bgslider-list{
+	list-style: none;
+	overflow: auto;
+	position: relative;
+	left:-100%;	
+	width: 9999px;
+
+}
+
+.bgslider-list li{
+	float: left;	
+	/*width:1360px;*/
+}
+
+
+#bgslider-buttons{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+}
+
+#bgslider-prev{float:left; cursor: pointer; padding: 4px;}
+#bgslider-next{float:right; cursor: pointer; padding: 4px;}
+
+#bgslider-indicators{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 999;
+}
+
+#bgslider-indicators ul{
+	list-style: none;	
+}
+#bgslider-indicators ul li{
+	display: inline-block;
+	cursor: pointer;
+
+	border:1px solid white;
+	background: black;
+	height: 10px;
+	width: 10px;
+}
+
+#bgslider-front{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+
+</style>
+
+
+<div id="bgslider-container">
+  <div id="bgslider-back">
+  	<ul class="bgslider-list">
+  		<li class="active"><img src="http://placehold.it/1361x480"></li>
+  		<li><img src="http://placehold.it/1362x480"></li>
+  		<li><img src="http://placehold.it/1363x480"></li>
+  		<li><img src="http://placehold.it/1364x480"></li>
+  	</ul>
+  </div>
+  <!-- the prev and next buttons -->
+  <div id="bgslider-buttons">
+  	<p><span id="bgslider-prev">Prev</span><span id="bgslider-next">Next</span></p>
+  </div>
+  <!-- dot indicators for slider -->
+  <div id="bgslider-indicators">
+  	<ul>
+  		<li id="dot-1"> </li>
+  		<li id="dot-2"> </li>
+  		<li id="dot-3"> </li>
+  		<li id="dot-4"> </li>
+  	</ul>
+  </div>
+  <!-- add all the front face objects in here -->
+  <div id="bgslider-front">  	
+  	<h2 style="text-align:center; margin:100px;"> THIS IS DUMMY HEADING! </h2>
+<!--   	<ul class="bgslider-list2">
+  		<li><h2> 1 IS DUMMY HEADING! </h2></li>
+  		<li><h2> 2 IS DUMMY HEADING! </h2></li>
+  		<li><h2> 3 IS DUMMY HEADING! </h2></li>
+  		<li><h2> 4 IS DUMMY HEADING! </h2></li>
+  	</ul> -->
+  </div>
+
+  <!-- the bgslider end -->
+</div>
+
+
+<script src="jquery-2.1.4.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script>
+$(document).ready(function() {
+	bgslider();
+});
+
+
+function bgslider() {
+
+	var slideTime= 500;
+
+	var sliderWidth= $("#bgslider-container").width();
+	var leftDefault= parseInt($(".bgslider-list").css('left'));
+
+	//setting width equal to container width
+	$(".bgslider-list li").width(sliderWidth);
+	// var check= $(".bgslider-list li").css('width');
+	// alert(check);
+
+	//moving last slide previous to first one
+	$(".bgslider-list li:first").before($(".bgslider-list li:last"));
+
+	//creating left and right slide variables
+	var slideLeft= parseInt($(".bgslider-list").css('left')) + sliderWidth;
+	var slideRight= parseInt($(".bgslider-list").css('left')) - sliderWidth;
+
+	//the previous btn function
+	$("#bgslider-prev").click(function(){
+		$(".bgslider-list").animate({'left': slideLeft }, slideTime, function(){
+			$(".bgslider-list li:first").before($(".bgslider-list li:last"));
+			$(".bgslider-list").css('left', leftDefault);
+		});
+	});
+
+	//the next button function
+	$("#bgslider-next").click(function(){
+		$(".bgslider-list").animate({'left': slideRight }, slideTime, function(){
+			$(".bgslider-list li:last").after($(".bgslider-list li:first"));
+			$(".bgslider-list").css('left', leftDefault);
+		});
+	});
+
+
+
+}//bgslider function end
+
+</script>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Loading screen test! </title>
+
+  <meta charset="utf-8" />
+  <meta name="author" content="me, who else!">
+  <meta name="description" content="Webpage description" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="pace.min.js" type="text/javascript"></script>
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    .pace {
+      -webkit-pointer-events: none;
+      pointer-events: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      z-index: 2000;
+      position: fixed;
+      margin: auto;
+      left: 40px;
+      bottom: 40px;
+      height: 3px;
+      width: 200px;
+      background: rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .pace .pace-progress {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+
+      max-width: 200px;
+      position: fixed;
+      z-index: 2000;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 100%;
+      height: 100%;
+      width: 100%;
+      background: #000;
+    }
+
+    .pace.pace-inactive {
+      display: none;
+    }
+
+    .words-loader {
+      z-index: 99;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid #000;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .words-loader #loaderwords {
+      position: absolute;
+      left: 50%;
+      top: 25%;
+      font-size: 200px;
+      transform: translateX(-50%);
+    }
+  </style>
+
+
+  <script>
+    Pace.on('done', function () {
+      console.log('finished');
+      $('.words-loader').slideUp();
+    });
+
+    (function () {
+
+      var words = [
+          'awesome',
+          'incredible',
+          'cool',
+          'fantastic'
+        ],
+        i = 0;
+      setInterval(function () {
+        $('#loaderwords').html(words[i = (i + 1) % words.length]);
+      }, 400);
+
+    })();
+  </script>
+
+</head>
+
+
+<body>
+  <div class="words-loader">
+    <h1 id="loaderwords">text</h1>
+  </div>
+
+
+  <div id="container">
+
+
+    <!-- 2mb -->
+    <!-- <img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73992/world.200403.3x5400x2700.jpg" width="100%" /> -->
+    <!-- 20mb -->
+    <!-- <img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73992/world.200403.3x5400x2700.png" width="100%" /> -->
+    <!-- 200mb -->
+    <img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73992/world.200403.3x21600x21600.D1.png" width="100%" />
+
+
+  </div>
+
+</body>
+
+</html>

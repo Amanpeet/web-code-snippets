@@ -1,0 +1,119 @@
+<style>
+*{margin: 0; padding: 0; box-sizing:border-box;}
+body,html{height: 100%; overflow: hidden; font-variant: small-caps; }
+
+div{
+  height: 100%;
+  overflow: hidden;
+  border: 4px solid black;
+  margin: auto;
+  background: #E3E3E3;
+}
+
+img{
+  /*border: 1px solid #8C8C8C;*/
+  max-height: 100%;
+  position: absolute;
+  left:50%;
+  top:50%;
+  -webkit-transform:translate(-50%, -50%);
+      -ms-transform:translate(-50%, -50%);
+          transform:translate(-50%, -50%);
+  -webkit-transform-origin:center;
+      -ms-transform-origin:center;
+          transform-origin:center;
+  -webkit-transition: all 0s ease;
+          transition: all 0s ease;
+}
+
+.center{
+  width: 200px;
+  height: 200px;
+}
+
+p{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+</style>
+
+<body>
+<p>
+  Cord X <span id="X">0</span><br />
+  Cord Y <span id="Y">0</span><br />
+  Blur Z <span id="Z">0</span><br />
+  Rotate <span id="R">0</span>
+</p>
+
+  <div>
+    <img class="svg large"  src="images/large_circle.svg" />
+    <img class="svg medium" src="images/medium_circle.svg" />
+    <img class="svg small"  src="images/small_circle.svg" />
+    <img class="svg center" src="images/drink221.svg" />
+  </div>
+
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+
+  var w = $(window).width();
+  var h = $(window).height();
+  var z, r;
+  //alert(w/2+" x " +h/2);
+
+
+  $('div').mousemove(function(event){
+      //get x y cordinates of mouse in div
+      var x = event.pageX;
+      var y = event.pageY;
+
+      //calculating center point (rounded n positive)
+      var a= Math.round(Math.abs(w/2-x));
+      var b= Math.round(Math.abs(h/2-y));
+
+      //only if value is more than zero
+      if ((a != 0 && b!=0)) {          
+        $("p span#X").text(a);
+        $("p span#Y").text(b);
+
+        //calculating blur (getting small number)
+        z = Math.round((a+b)/80);
+        $("p span#Z").text(z);
+
+        //applying blur
+        $("img:nth-child(4)").css("filter","blur("+z+"px)");
+        $("img:nth-child(4)").css("-webkit-filter","blur("+z+"px)");
+
+        //calculating the rotation
+        r=Math.round((a+b)/60*10);
+        $("p span#R").text(r);
+
+        //other angles
+        var r1= r*0.3;
+        var r2= r*0.2*-1;
+        var r3= r/3;        
+
+        //spinning the wheels
+        $("img:nth-child(1)").css("transform","translate(-50%, -50%) rotate("+r1+"deg)");
+        $("img:nth-child(1)").css("-webkit-transform","translate(-50%, -50%) rotate("+r1+"deg)");
+
+        $("img:nth-child(2)").css("transform","translate(-50%, -50%) rotate("+r2+"deg)");
+        $("img:nth-child(2)").css("-webkit-transform","translate(-50%, -50%) rotate("+r2+"deg)");
+
+        $("img:nth-child(3)").css("transform","translate(-50%, -50%) rotate("+r3+"deg)");
+        $("img:nth-child(3)").css("-webkit-transform","translate(-50%, -50%) rotate("+r3+"deg)");
+
+      }
+  });
+
+
+
+});
+
+</script>

@@ -1,0 +1,76 @@
+{
+  "status": true,
+  "flights": [
+    {
+      "uid": 1667096,
+      "type": "arrivals",
+      "flightNumber": "3U8945",
+      "trafficTypeCode": "PS",
+      "airlineCode": "CSC",
+      "destinationCode": "DXB",
+      "aircraftCode": "333",
+      "flightStatusCode": "DLU",
+      "originCode": "CTU",
+      "beltNumber": "07",
+      "gateNumber": null,
+      "trafficTypeName": "Passenger Scheduled",
+      "terminal": "1",
+      "fullName": "Sichuan Airlines",
+      "fullNameA": "",
+      "codeShare": [],
+      "lang": {
+        "en": {
+          "airlineName": "Sichuan Airlines",
+          "originName": "Chengdu",
+          "destinationName": "Dubai",
+          "flightStatusText": "Delayed"
+        },
+        "ae": {
+          "airlineName": "",
+          "originName": "جينقدو",
+          "destinationName": "دبي",
+          "flightStatusText": "مؤجلة"
+        }
+      },
+      "lastChanged": 1471346111,
+      "scheduled": 1471349400,
+      "estimated": 1471355100,
+      "actual": null
+    },
+    {
+      "uid": 216002,
+      "type": "arrivals",
+      "flightNumber": "EK958",
+      "trafficTypeCode": "PS",
+      "airlineCode": "UAE",
+      "destinationCode": "DXB",
+      "aircraftCode": "77W",
+      "flightStatusCode": "EST",
+      "originCode": "BEY",
+      "beltNumber": "301",
+      "gateNumber": null,
+      "trafficTypeName": "Passenger Scheduled",
+      "terminal": "3",
+      "fullName": "Emirates",
+      "fullNameA": "????? ????????",
+      "lang": {
+        "en": {
+          "airlineName": "Emirates",
+          "originName": "Beirut",
+          "destinationName": "Dubai",
+          "flightStatusText": "Estimated"
+        },
+        "ae": {
+          "airlineName": "????? ????????",
+          "originName": "?????",
+          "destinationName": "???",
+          "flightStatusText": "????"
+        }
+      },
+      "lastChanged": 1470141731,
+      "scheduled": 1470142500,
+      "estimated": 1470142260,
+      "actual": null
+    }
+  ]
+}

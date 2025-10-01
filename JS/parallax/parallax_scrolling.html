@@ -1,0 +1,57 @@
+<div class="background">
+  <div class="content">
+    <p>Hi, this is some content!</p>
+    <p>Parallax is awesome!</p>
+	</div>
+</div>
+
+<div class="filler">
+  <div class="content">
+    <p>Hi, this is some content!</p>
+    <p>Parallax is awesome!</p>
+	</div>
+</div>
+
+<style>
+	div.background {
+    background: url('http://placehold.it/1920x1080') center 0 no-repeat fixed;
+    height: 1000px;
+    position: relative;
+    -webkit-box-shadow: 0 0 20px #333;
+    box-shadow: 0 0 20px #333;
+	}    
+
+	div.content {
+	  font-family: Georgia, serif;
+	  position: absolute;
+	  height: 500px;
+	  text-align: center;
+	  width: 100%;
+	  top: 30%;
+	  font-size:40px;
+	}
+
+	div.filler {
+    height: 1000px;
+    position: relative;
+    -webkit-box-shadow: 0 0 20px #333;
+    box-shadow: 0 0 20px #333;
+	}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+    var $win = $(window);
+
+    $('.background').each(function(){
+      var scroll_speed = 5;
+      var $this = $(this);
+      $(window).scroll(function() {
+        var bgScroll = -(($win.scrollTop() - $this.offset().top)/ scroll_speed);
+        var bgPosition = 'center '+ bgScroll + 'px';
+        $this.css({ backgroundPosition: bgPosition });
+      });
+    });
+	});
+</script>

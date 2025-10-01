@@ -1,0 +1,142 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: gainsboro;
+  /*overflow: hidden;*/
+}
+
+div#sidebar-slider {}
+
+div#siderbar-slider-inner {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  margin-left: 400px;
+}
+
+ul.sidebar-slider-list {
+  border: 1px dashed dimgray;
+  width: 100%;
+  height: 100%;
+  /*overflow: hidden;*/  
+  position: relative;
+  list-style: none;
+}
+
+ul.sidebar-slider-list li {
+  border: 1px solid tomato;
+  position: absolute;
+  top: 0px;
+  left: 100%;
+  transition: all 0.3s ease;
+}
+
+#sidebar-slider-prev,
+#sidebar-slider-next {
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.active-slider-item {
+  z-index: 999;
+  left: 0px !important;
+}
+
+
+</style>
+
+
+<div id="sidebar-slider">
+  <div id="siderbar-slider-inner">
+    <ul class="sidebar-slider-list">
+      <li class="active-slider-item"><img src="http://placehold.it/371x600"></li>
+      <li><img src="http://placehold.it/372x600"></li>
+      <li><img src="http://placehold.it/373x600"></li>
+      <li><img src="http://placehold.it/374x600"></li>
+    </ul>
+  </div>
+  <!-- the prev and next buttons -->
+  <div id="slider-buttons">
+    <p><span id="sidebar-slider-prev">Prev</span><span id="sidebar-slider-next">Next</span></p>
+  </div>
+</div>
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  cardSlider();
+
+});
+
+function cardSlider() {
+
+    //declaring current next and previous cards 
+    var current = $(".active-slider-item");
+    var nextx = $(".active-slider-item").next();
+    var prevx = $(".active-slider-item").prev();
+
+
+    //on next click
+    $("#sidebar-slider-next").click(function(event) {
+
+      //re-enabling the prev button
+      $("#sidebar-slider-prev").css("pointer-events", "initial");
+
+      current.removeClass("active-slider-item");
+      nextx.addClass("active-slider-item");
+
+      //reset variables
+      current = $(".active-slider-item");
+      nextx = $(".active-slider-item").next();
+      prevx = $(".active-slider-item").prev();
+
+      //previous slide to left
+      prevx.css("left", "-100%");
+
+      //if no next slide
+      if (nextx.length === 0) {
+        //disabling the next button    
+        $("#sidebar-slider-next").css("pointer-events", "none");
+      }
+
+    });
+
+
+    $("#sidebar-slider-prev").click(function() {
+
+      //re-enabling the next button
+      $("#sidebar-slider-next").css("pointer-events", "initial");
+
+      current.removeClass("active-slider-item");
+      prevx.addClass("active-slider-item");
+
+      //reset variables
+      current = $(".active-slider-item");
+      nextx = $(".active-slider-item").next();
+      prevx = $(".active-slider-item").prev();
+
+      //next slide to right
+      nextx.css("left", "100%");
+
+      //if no prev slide
+      if (prevx.length === 0) {
+        //disabling the prev button
+        $("#sidebar-slider-prev").css("pointer-events", "none");
+      }
+
+    });
+
+  } //cardSlider end
+</script>

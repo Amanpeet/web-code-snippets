@@ -1,0 +1,82 @@
+<input required readonly class="datepickery" placeholder="Delivery Date" type="text" name="" value="" />
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script>
+$(function() {
+
+  $('.check_form').click(function() {
+    //event.preventDefault();
+    if ($('.datepickery').val().length === 0) {
+      $('.datepickery').focus();
+      return false;
+    } else if ($('.messagery').val().length === 0) {
+      $('.messagery').focus();
+      return false;
+    } else {
+      return true;
+    }
+
+  });
+  $('.check_before').click(function() {
+    if ($('.check_before').is(':checked')) {
+      $('.check_form').attr('disabled', false);
+    } else {
+      $('.check_form').attr('disabled', true);
+    }
+  });
+  //add holidays here
+  var disabledDates = ['11/23/2017', '12/25/2017', '12/31/2017', '11/23/2018', '12/25/2018', '12/31/2018'];
+
+  var currentTime = new Date();
+  var timeCond = 0;
+  if (currentTime.getHours() <= 12) {
+    timeCond = 0;
+  } else {
+    timeCond = 1;
+  }
+
+  function noWeekendsOrHolidays(date) {
+    var noWeekend = $.datepicker.noWeekends(date);
+    if (noWeekend[0]) {
+      return disableDays(date);
+    } else {
+      return noWeekend;
+    }
+  }
+
+  function disableDays(date) {
+    for (var i = 0; i < disabledDates.length; i++) {
+      if (new Date(disabledDates[i]).toString() == date.toString()) {
+        return [false];
+      }
+    }
+    return [true];
+  }
+
+  function positionDatepicker(textbox, instance) {
+    var txtBoxOffset = $(this).offset();
+    var textBoxWidth = $(this).outerWidth();
+    var top = txtBoxOffset.top;
+    var left = txtBoxOffset.left;
+    setTimeout(function() {
+      instance.dpDiv.css({
+        //top: top - 40 , //you can adjust this value accordingly
+        //left: left + textBoxWidth + 4//show at the end of textBox
+      });
+    }, 0);
+  }
+
+  $('.datepickery').datepicker({
+    minDate: timeCond,
+    beforeShowDay: noWeekendsOrHolidays,
+    beforeShow: positionDatepicker,
+    firstDay: 1,
+  });
+
+
+});
+</script>

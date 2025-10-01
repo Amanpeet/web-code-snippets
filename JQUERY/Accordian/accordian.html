@@ -1,0 +1,118 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{background: #E6E6E6}
+
+
+/*******************
+	AccordianX v0.1
+*******************/
+ul{
+	list-style: inside none;
+}
+.accordian-container{
+	overflow: hidden;
+	width:520px;
+	margin:40px auto;
+}
+.accordian-list li h3{
+	background: #D4D4D4;
+	padding: 10px;
+	border: 1px solid #707070;
+	border-bottom: none;
+}
+.accordian-list li p{
+	padding: 10px;
+	background: #F7F7F7;
+	border-left: 1px solid #5B5B5B;
+	border-right: 1px solid #5B5B5B;
+	/*if no fallback needed*/
+	/*display: none;*/
+}
+.accordian-list li:last-child h3,
+.accordian-list li:last-child p{
+	border-bottom: 1px solid #707070;
+}
+.accordian-list li h3 span{
+	float: right;	
+	cursor:pointer;
+	padding: 2px 6px;
+}
+
+
+
+</style>
+
+
+<div class="accordian-container">
+	<ul class="accordian-list">
+		<li>
+			<h3>ORANGES <span>+</span> </h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</li>
+		<li>
+			<h3>GRAPES <span>+</span> </h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</li>
+		<li>
+			<h3>MANGOES <span>+</span> </h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</li>
+	</ul>
+</div>
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+	accordianX();
+
+});
+
+function accordianX(){
+	//hide all of em first
+	$(".accordian-list li p").hide();
+
+	$(".accordian-list li h3 span").click(function(){
+
+		if($(this).parent().siblings("p").is(":visible")){
+			//if clicked on same again
+			$(".accordian-list li p").slideUp(200);
+			$(".accordian-list li h3 span").text("+");
+		}
+		else{
+			//wrap up things first
+			$(".accordian-list li p").slideUp(200);
+			$(".accordian-list li h3 span").text("+");
+
+			//open current one
+			$(this).parent().siblings("p").slideDown(200);
+			$(this).text("-");
+		}
+		
+	});
+
+};
+</script>

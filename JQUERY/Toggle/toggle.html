@@ -1,0 +1,53 @@
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+center{	margin-top: 100px;}
+ul{list-style: inside;}
+
+.toggle-div{
+	border:1px solid #9B9B9B;
+	background: #D0D0D0;
+	text-align: left;
+	width: 200px;
+	padding:20px;
+}
+
+/*******  TOGGLE ********/
+/*no css required*/
+
+</style>
+
+<center>
+
+<input type="button" class="toggle-btn" value="Toggle" />
+<div class="toggle-div">
+	<h2>Toggle types:</h2>
+	<ul>
+		<li>toggle()</li>
+		<li>fadeToggle(200)</li>
+		<li>slideToggle(200)</li>
+	</ul>
+</div>
+	
+</center>
+
+
+<!-- <script src="jquery-2.1.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	$(".toggle-btn").click(function(){
+
+		$(".toggle-div").toggle();
+
+	});
+
+});
+
+</script>
